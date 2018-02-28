@@ -34,7 +34,7 @@ set background=dark
 colorscheme kalahari
 " diffrentes options
 set number
-
+set tabstop=4
 " rainbow
 let g:rainbow_active = 1
 
