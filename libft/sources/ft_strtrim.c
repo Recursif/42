@@ -6,7 +6,7 @@ static size_t	ft_trimbegin(char const *s)
 	size_t	i;
 
 	i = 0;
-	while (s[i] && IS_WS(s[i]))
+	while (s[i] && ft_isspace(s[i]))
 		i++;
 	return (i);
 }
@@ -18,9 +18,9 @@ static size_t	ft_trimend(char const *s)
 	if (!*s)
 		return (0);
 	i = ft_strlen(s) - 1;
-	while (i > 0 && IS_WS(s[i]))
+	while (i > 0 && ft_isspace(s[i]))
 		i--;
-	return (i);
+	return (i);		
 }
 
 char			*ft_strtrim(char const *s)
