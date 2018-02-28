@@ -1,0 +1,9 @@
+Extra function: ft_isblank.c
+Extra function: ft_islower.c
+Extra function: ft_isnumber.c
+Extra function: ft_isspace.c
+Extra function: ft_isupper.c
+Extra function: ft_lstpop.c
+Extra function: ft_strndup.c
+Extra function: ft_strtrimc.c
+

@@ -6,10 +6,9 @@
 /*   By: jdumorti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:24:53 by jdumorti          #+#    #+#             */
-/*   Updated: 2018/02/28 17:26:32 by jdumorti         ###   ########.fr       */
+/*   Updated: 2018/02/28 18:10:52 by jdumorti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {

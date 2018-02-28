@@ -1,0 +1,19 @@
+CLEANING DIRECTORY
+--------------------------------------------
+CHECKING RULE: all
+-> Failing rule: It should have compiled a binary named 'libft.a'
+-> Failing rule: It should not have cleaned the objects files
+-> Failing rule: Processing the rule 'all' twice in a row should result in nothing to be done
+--------------------------------------------
+CHECKING RULE: clean
+-> Cannot check the rule 'clean' because of the failing rule 'all'
+--------------------------------------------
+CHECKING RULE: re
+-> Cannot check the rule 're' because of the failing rule 'all'
+--------------------------------------------
+CHECKING RULE: fclean
+--------------------------------------------
+CHECKING RULE: $(NAME)
+-> Failing rule: It should have compiled a binary named 'libft.a'
+-> Failing rule: It should not have cleaned the objects files
+-> Failing rule: Processing the rule 'all' twice in a row should result in nothing to be done

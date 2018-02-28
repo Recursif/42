@@ -6,10 +6,9 @@
 /*   By: jdumorti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:26:20 by jdumorti          #+#    #+#             */
-/*   Updated: 2018/02/28 17:26:22 by jdumorti         ###   ########.fr       */
+/*   Updated: 2018/02/28 18:15:29 by jdumorti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -32,7 +31,7 @@ static size_t	ft_trimend(char const *s)
 	i = ft_strlen(s) - 1;
 	while (i > 0 && ft_isspace(s[i]))
 		i--;
-	return (i);		
+	return (i);
 }
 
 char			*ft_strtrim(char const *s)
