@@ -21,6 +21,7 @@ typedef struct		s_dlist
 }					t_dlist;
 
 
+
 int					ft_atoi(const char *str);
 char				*ft_itoa(int n);
 int					ft_tolower(int c);
