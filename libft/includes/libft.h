@@ -21,10 +21,19 @@ typedef struct		s_dlist
 }					t_dlist;
 
 
+void				ft_cesar(char *s, int n);
+void				ft_vigenere(char *s, char *key);
+void				ft_vigenere_decode(char *s, char *key);
+
 int					ft_atoi(const char *str);
 char				*ft_itoa(int n);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+
+int					ft_find_index_str(int c, char *s);
+
+int					ft_getchar(void);
+int					ft_getchar_fd(int fd);
 
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
@@ -36,6 +45,7 @@ int					ft_islower(int c);
 int					ft_isupper(int c);
 int					ft_isspace(int c);
 int					ft_isprint(int c);
+int					ft_is_in_str(int c, char *s);
 
 void				ft_bzero(void *s, size_t n);
 void				*ft_memset(void *s, int c, size_t n);
