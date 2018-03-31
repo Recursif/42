@@ -1,112 +1,80 @@
 import numpy as np
 import tkinter as tk
 
-from PIL import Image
+from PIL import Image, ImageTk
 
-photos = []
+def initArrayList():
+    arrayList =[]
+    for i in range(100):
+        nb = str(i)
+        name_image = "./bands/" + nb + ".png"
+        array_image = np.array(Image.open(name_image).convert('L'))
+        mat = 255* np.ones((array_image.shape[0],array_image.shape[1]))
+        array = array_image
+
+        arrayList.append(array)
+
+    return (arrayList)
+
+def displayPaper(arrayList):
+    window = tk.Tk()
+
+    canvas = tk.Canvas(window, width=1000, height=1400)
+
+    imgList = []
+    for array in arrayList:
+        img = Image.fromarray(array)
+        imgList.append(ImageTk.PhotoImage(img))
+
+    x = 0
+    for i in range(lenList):
+        canvas.create_image(x, 0, anchor="nw", image=imgList[i])
+        x += 10
+
+    canvas.pack()
+
+    window.mainloop()
+
+def find_minimum_index(i , arrayList):
+    rotate = 0
+    minimum = 1400*256
+    index = 0
+    for j in range(i + 1, len(arrayList)):
+
+        Vdiff1 = np.absolute(arrayList[i][:,:2] - arrayList[j][:, -2:])
+        Vdiff2 = np.absolute(arrayList[i][:,:2] - np.fliplr(np.flipud(arrayList[j][:, -2:])))
+
+        S1 = np.sum(Vdiff1)
+        S2 = np.sum(Vdiff2)
+        if (min(S1, S2) < minimum):
+            minimum = min(S1, S2)
+            index = j
+    if (minimum == S2):
+        rotate = 1
+    return (index, rotate)
 
 
-for i in range(100):
-    nb = str(i)
-    name_image = "./bands/" + nb + ".png"
-    array_image = np.array(Image.open(name_image).convert('L'))
-    firstL = array_image[:, 0]
-    lastL = array_image[:, -1]
-    print (firstL, lastL)
-    photos.append([name_image, firstL, lastL])
 
-len = len(photos)
-window1 = tk.Tk()
 
-canvas1 = tk.Canvas(window1, width=1000, height=1400)
+arrayList = initArrayList()
+
+lenList = len(arrayList)
+
+#displayPaper(arrayList)
 
 i = 0
-plomb = []
-for photo in photos:
-    plomb.append(tk.PhotoImage(file=photo[0]))
+while (i < lenList - 2):
 
-for j in range(len):
-    canvas1.create_image(i,0, anchor="nw", image=plomb[j])
-    i += 10
-canvas1.pack()
+    index, rotate = find_minimum_index(i, arrayList)
 
-window1.mainloop()
+    if (index > i):
+        tmp = arrayList[index]
+        arrayList[index] = arrayList[i]
+        arrayList[i] = tmp;
+        print(arrayList[i])
 
-
-
-i = 0
-while (i < len - 1):
-    nextPhotos = list(photos)
-    min = 1400*255
-    index = i
-    for j in range(len - i):
-        moy = nextPhotos[i + j][1]
-        for l in range(1,len(moy) - 1):
-            moy[l]= nextPhotos[i + j][1]
-        
-        diff = nextPhotos[i][2] -
-        res = np.absolute(diff)
-        testMin = sum(res)
-        print (testMin)
-        if (testMin < min):
-            print (testMin, "ok")
-            index = i + j
-            min = testMin
-    if (i < index):
-        nextPhotos = nextPhotos[:i + 1] + [nextPhotos[index]] + nextPhotos[i + 1: index] + nextPhotos[index + 1:]
-    photos = list(nextPhotos)
+    if (rotate == 1):
+         arrayList[index + 1] = np.fliplr(np.flipud(arrayList[index + 1]))
     i += 1
 
-"""
-nextPhotos = list(photos)
-min = 1500*255
-index = i
-j = 0
-for j in range(len - i):
-    diff = nextPhotos[i][1] - nextPhotos[i + j][2]
-    res = np.absolute(diff)
-    testMin = sum(res)
-    if (testMin < min):
-        index = i + j
-        print(index)
-        min = testMin
-if (i < index):
-
-photos = list(nextPhotos)
-
-for k in range(5):
-    for i in range(len - 1):
-            nextPhotos = list(photos)
-            min = 1400*255
-            index = i
-            for j in range(len - i):
-                diff = nextPhotos[i][2] - nextPhotos[i + j][1]
-                res = np.absolute(diff)
-                testMin = sum(res)
-                print (testMin)
-                if (testMin < min):
-                    print (testMin, "ok")
-                    index = i + j
-                    min = testMin
-            if (i < index):
-                nextPhotos = photos[:i - 1] + [photos[index]] + photos[i: index] + photos[index + 1:]
-
-"""
-
-
-
-window = tk.Tk()
-
-canvas = tk.Canvas(window, width=1000, height=1400)
-
-i = 0
-plomb = []
-for photo in photos:
-    plomb.append(tk.PhotoImage(file=photo[0]))
-
-for j in range(len):
-    canvas.create_image(i,0, anchor="nw", image=plomb[j])
-    i += 10
-canvas.pack()
-
-window.mainloop()
+displayPaper(arrayList)
