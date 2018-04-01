@@ -1,13 +1,18 @@
-var net = require('net');
+const net = require('net');
 
-var server = net.createServer(function (socket) {
-	var date = new Date();
-	var year = date.getFullYear();
-	var month = date.getMonth();
-	var day = date.getDate();
-	var hours =date.getHours();
-	var mins = date.getMinutes();
-	var timestamp = year + '-' + month + '-' + day + ' ' + hours + ':' + mins;
-	socket.write(timestamp);
+const server = net.createServer(function (socket) {
+	const date = new Date();
+	const year = date.getFullYear();
+	const month = date.getMonth() <= 9
+			? '0' + (date.getMonth() + 1)
+			: date.getMonth() + 1
+	const day = date.getDay() <= 9
+			? '0' + (date.getDay() + 1)
+			: date.getDay() + 1
+	const hours =date.getHours();
+	const mins = date.getMinutes();
+	const timestamp = `${year}-${month}-${day} ${hours}:${mins}\n`
+	socket.end(timestamp);
 })
-server.listen(8000)
+
+server.listen(process.argv[2])
