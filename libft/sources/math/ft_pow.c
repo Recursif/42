@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vigenere_decode.c                               :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdumorti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/25 14:48:34 by jdumorti          #+#    #+#             */
-/*   Updated: 2018/03/25 16:53:29 by jdumorti         ###   ########.fr       */
+/*   Created: 2018/03/25 16:59:51 by jdumorti          #+#    #+#             */
+/*   Updated: 2018/03/25 17:30:23 by jdumorti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
 
-char	*ft_vigenere_decode(char *s, char *key)
+unsigned long long	ft_pow(unsigned long long n, unsigned long long pow)
 {
-	int		i;
-	int		j;
+	if (pow >= 1)
+		return (n * ft_pow(n, pow - 1));
+	else if (pow == 0)
+		return (1);
+	else
+		return (0);
+}
 
-	s = ft_str_toupper(s);
-	i = 0;
-	j = 0;
-	if (!(*key) || !(*s))
-		return (NULL);
-	while (s[i])
-	{
-		if (ft_isalpha_up(s[i]))
-		{
-			s[i] = 'A' + (s[i] - ft_toupper(key[j]) + 26) % 26;
-			j++;
-		}
-		if (key[j] == '\0')
-			j = 0;
-		i++;
-	}
-	return (s);
+int		main(int ac, char **av)
+{
+	unsigned long long	i;
+
+	i = ft_pow(2, 58);
+	printf("%llu", i);
+	return (0);
 }
