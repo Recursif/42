@@ -1,0 +1,23 @@
+SVM with Kenrels
+
+Support Vector Machine vc Logistic Rgression
+
+n = number of features
+m = number of training examples
+
+if (n >> m: ex n = 10000, m = 1000)
+Use LR or SVM without a kernel ("linear kernel")
+
+if (n < m: ex n(1 - 1000), m (10 - 10000))
+Use SVM with a gaussian kernel
+
+if (n << m: ex n = 1 - 1000, m = 50000+)
+Create/Add more features
+Use LR or SVM without a kernel
+
+Neural network work well for most of these settings, but may be slower to train.
+
+
+Hypothesis: Given x, compute features f C Rn+1
+
+kernel permet de retravailler sur les données dans une dimension supérieur
