@@ -62,9 +62,9 @@ def parse_tetriminos(n, sample):
     return (tetriminos)
 
 
-def import_tetriminos(i):
+def import_tetriminos(fd):
     list_tetriminos = []
-    with open('tetriminos/sample'+ str(i), 'r') as tetriminos:
+    with open(fd, 'r') as tetriminos:
         sample = tetriminos.read()
         list_tetriminos = parse_sample(sample)
         if (list_tetriminos):
@@ -140,7 +140,7 @@ def calculate_next_pos(pos, size):
     return (pos)
 
 
-def fillit(l, canvas):
+def fillit(l):
     square_size = init_square_size(len(l))
     l_pos = init_pos(len(l))
     grid = create_grid(square_size)
@@ -171,25 +171,24 @@ def fillit(l, canvas):
                     l_pos[i] = [0, 0]
     return (grid)
 
-def draw_grid(grid, canvas):
+def draw_grid(grid, canvas, res):
     i = 0
     while (i < len(grid)):
         j = 0
         while (j < len(grid[0])):
-            draw_square(grid[i][j], j, i, canvas)
+            draw_square(grid[i][j], j, i, canvas, res)
             j += 1
         i += 1
 
-def draw_square(symb, x, y, canvas):
+def draw_square(symb, x, y, canvas, res = 10):
     nb = int(ord(symb) - ord('A'))
     canvas.create_rectangle(x * res + 2, y * res + 2, x * res + res + 2, y * res + res + 2, fill=color)
 
-def print_grid(grid, canvas):
+def print_grid(grid):
     i = 0
     while (i < len(grid)):
         print (grid[i])
         i += 1
-    draw_grid(grid, canvas)
     time.sleep(1)
 
 def create_list_color(n):
@@ -197,7 +196,7 @@ def create_list_color(n):
     for i in range(n):
         list_color.append(choice_color())
     return (list_color)
-    
+
 def choice_color():
     list_hexa = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']
     color = "#ee"
@@ -220,15 +219,17 @@ def create_canvas(cols, rows, res, window):
 
     for j in range(3, sizeY + res, res):
         canvas.create_line(0, j, sizeX + 3, j)
-    
+
     return (canvas)
 
 
 
 def main():
-    
+
     window = tk.Tk()
-    
+
+    fd = str(input())
+
     res = 10
     cols = 10
     rows = 10
@@ -236,10 +237,10 @@ def main():
     canvas = create_canvas(cols, rows, res, window)
 
     button_quit = tk.Button(window, text='quit', command=window.quit)
-    
+
     button_quit.pack(padx=5, pady=5)
 
-    l_tetriminos = import_tetriminos(2)
+    l_tetriminos = import_tetriminos(fd)
 
     print (l_tetriminos)
 
@@ -247,8 +248,9 @@ def main():
 
     print (l_color)
 
-    grid = fillit(l_tetriminos, canvas)
+    grid = fillit(l_tetriminos)
 
+    draw
     window.mainloop()
 
 if __name__ == '__main__':

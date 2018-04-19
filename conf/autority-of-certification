@@ -1,0 +1,83 @@
+cadenas vert lol et confirme l'identité
+
+domain validation
+
+extended validation
+
+transform le pognon en confiance
+
+
+let's encrypt (gratuit) certif de 3 mois
+
+start ssl (rip) ils ont la confiance de mozilla
+
+global sign (sympa mais cher)
+
+comodo pas tres ethique mais pas cher 200euros
+
+
+autorité ont doit leur faire confiance
+
+130 racines peut confirmer l'identité des sites webs
+
+confiance bien relative lel
+
+
+enregistrement dns et on interdit au autre authorité de faire des certificats
+
+
+
+wild card = certificat pour touts les sous domaines www.url/*
+
+cloud-flare provider server domaines
+
+let's encrypt verrifient le domaines et le serveur RFC
+
+beta public marche avec dns 1
+
+
+depend du public
+entreprise : global sign
+durée dans le temps : comodo serveur IRC
+
+
+attention mise a jour des certificats
+
+site classique https: cloud-flare proxy
+
+site statique
+
+fail cloub-bleed
+
+
+
+start ssl : erreur : - rachat caché
+
+simentech était sa propre solution
+
+lenevo suite super fish CA
+
+les certif sont register dans un db publique
+
+google 50 % des nav
+
+ne pas se faire blacklist
+
+capforum : les CAs et
+
+certificat de code signé
+
+
+maj de windows a tout niqué
+
+casert : CA assosiative
+
+pkg : CA-certicate
+
+blacklist
+
+mozilla propre list de certicat
+
+avast
+
+JAVA prend les root genere un certif de racine 
