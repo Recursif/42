@@ -1,0 +1,15 @@
+
+#Intro
+
+Hyperledger Fabric is a platform for distribued
+ledger solutions underpinned by a modular architecture
+delivering high degrees of confidentiality, resiliency,
+flexibility and scalability.
+
+Distributed ledger that records all the tx that takes place on the network
+
+append-only, using crypto techniques that guarantee that tx can't be modified
+
+Smart contract
+
+smart contracts provides controlled access to the ledger

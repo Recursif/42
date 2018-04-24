@@ -1,0 +1,14 @@
+Une expression regulière ou regex
+
+c'est une chaine de caractère qui décrit selon une
+syntaxe précise un ensemble de chainde caractères.
+
+Elles sont utilisé dans des logiciels avec des
+fonctionalités de lecture controle modification et
+analyse de texte ainsi que des manipulations de langages
+formelles que sont les langages informatiques.
+
+Ces expressions sont décrites par des patterns.
+
+
+En théorie des langages formels, une expression régulière est une expression représentant un langage rationnel.

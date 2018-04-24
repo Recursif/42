@@ -1,0 +1,35 @@
+Hyperledger Fabric is a platform for distributed ledger solutions,
+underpinned by a modular architecture delivering high degrees of confidentiality,
+resiliency, flexibility and scalability.
+
+It is designed to support pluggable implementations of different components,
+and accommodate the complexity and intricacies that exist across the economic ecosystem.
+
+Hyperledger suppport production business networks.
+
+Supply chain / Health caractère
+
+Permission blockchain that require every peer to execute every tx,
+maintain a ledger and run consensus scale very well.
+
+Can't support private tx and confidental contract
+
+modular
+scalable
+
+Peers : Endorser / Committer
+
+Consenters
+
+Managing confidential information without passing througth central authority
+
+
+Everyone working together while ensuring
+
+Confidentiality
+Scalability
+Security
+
+
+
+Set curl / docker / node or go sdk and GOOOOO!
