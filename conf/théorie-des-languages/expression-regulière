@@ -12,3 +12,16 @@ Ces expressions sont décrites par des patterns.
 
 
 En théorie des langages formels, une expression régulière est une expression représentant un langage rationnel.
+
+classe de caractères:
+-intension [0-9]
+-extension [0123456789]
+negativement [^0-9]
+
+quantificateurs:
+
+? qui définit un groupe qui existe zéro ou une fois
+
+* qui définit un groupe qui existe zéro ou plusieurs fois (l'étoile de Kleene)
+
++ qui définit un groupe qui existe une ou plusieurs fois
