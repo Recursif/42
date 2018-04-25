@@ -133,3 +133,49 @@ Automates combinatoires.
 
 Dans un automate déterministe, chaque état possède au plus une transition pour chaque symbole d'entrée
 (et même exactement une dans le cas où l'automate est complet).
+
+
+## Modèle mathématique
+
+Les définitions formelles sont les suivantes:
+
+Un automate fini deterministe A = (E, S, so, G, F) est composé de :
+- E un ensemble fini, non vide de lettres qui est l'alphabet d'entrée,
+- S un ensemble fini non vide d'états,
+- so l'état initial, élément de S. Dans un automate non déterministe so peut être un ensemble d'états.
+- G la fonction de transition d'états G: S x E -> S
+( dans un automate non déterministe, c'est une fonction
+  G : S x E -> B(S), donc à valeur dans l'ensemble des parties de S, en d'autre termes G retourne ensemble d'états)
+- F est l'ensemble des états terminaux, un sous-ensemble (eventuellement vide) de S
+
+soit G la fonction partielle q C S et a C E. Si G(q,a) n'est pas défini, l'automate signal une erreur.
+
+
+Un automate fini est une machine de Turing très particulière, ou la tête ne peut effectuer
+que des opérations de lecture (pas d'écriture), et de plus se déplace toujours de gauche vers la droite (pas de retour en arrière).
+
+
+Un transducteur fini T = (E, T, S, so, G, w) est composé de:
+- E un ensemble fini, non vide de lettres qui est l'alphabet d'entrée.
+- T un ensemble fini, non vide de lettres qui est l'alphabet de sortie.
+- S un ensemble fini non vide d'états.
+- so l'état initial, élément de S. Dans un automate non déterministe, so peut être un ensemble d'états.
+- G est la fonction de transition d'états G(S x E) -> S.
+- w est la fonction de sortie.
+
+Si la fonction de sortie est la fonction des états et de l'entrée (w: S x E -> T)
+la définition correspond à celle du modèle de Mealy.
+Si en revanche la sortie ne dépend que de l'état (w : S -> T), on est présence du modèle de Moore.
+
+Il n'est pas difficile de transformer un automate de Moore en un automate de Mealy en faisant
+ne dépendre la fonction de sortie que de l’état d'arrivée.
+La conversion réciproque, d'un automate de Mealy en un automate de Moore, est également possible,
+mais demande d'introduire des états supplémentaires.
+
+## Optimisation
+
+L'optimisation d'un automate fini signifie ici la recherche d'un automate fini déterministe
+avec le moins d'états réalisant la même fonction.
+
+L'algorithme le plus rapide est l'algorithme de Hopcroft datant de 1971.
+D'autres techniques sont l'algorithme de Moore et un algorithme de Brzozowski.

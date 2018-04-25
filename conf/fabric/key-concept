@@ -10,6 +10,31 @@ Distributed ledger that records all the tx that takes place on the network
 
 append-only, using crypto techniques that guarantee that tx can't be modified
 
-Smart contract
+# Smart contract
 
 smart contracts provides controlled access to the ledger
+
+smart-contacts are not only a key mechanism for encapsulating information and keeping it simple accross the network,
+they can also be written to allow participants to execute certain aspects of tx automatically.
+
+A smart contract can, for example, be written to stipulate the cost of shipping
+an item that changes depending on when it arrives.
+
+With the terms agreed to by both parties and written to the ledger, the appropriate funds change hands automatically when the item is received.
+
+# Consensus
+
+The process of keeping the ledger tx synchronized across the network
+to ensure that ledgers update only when tx are approved the appropriate participants,
+and that when ledgers do update, they update with the same tx in the same order.
+
+
+Hyperledger Fabric provides a membership identity service that manages user IDs and
+
+
+Hyperledger Fabric assigns network roles by node type.
+
+To provide concurrency and parallelism to the network, transaction execution is separated from transaction ordering and commitment.
+
+
+so processes on one can run independently of verification by the other.
