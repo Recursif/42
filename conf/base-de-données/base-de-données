@@ -85,7 +85,7 @@ pour lequel la base de données est utilisée,
 et concernant lequel des données sont enregistrées
 (exemple : des personnes, des produits, des commandes, des réservations…)
 
-attribut:
+attribut (champ colonne):
 - Un attribut est une caractéristique d'une entité susceptible d'être enregistrée dans la base de données.
 Par exemple, une personne (entité), son nom et son adresse (des attributs).
 champs ou colonne.
@@ -132,4 +132,35 @@ Une Classe est une catégorie d'objets et reflètetypiquement un concret.
 
 modèle de données hiéarchique:
 - Créer en 1960, c'est le plus ancien modèle de données.
-- Ce type de modèle de données est semblable
+Selon ce type de modèle, les infos sont groupées dans des enregistrements,
+chaque enregistrement comportent des champs.
+A chaque enregistrement correspond un enregistrement parent.
+
+modèle de données réseau:
+- Similaire au modèle hiéarchique.
+Les infos sont groupés dans des enregistrements, chaque enregistrement possède des champs.
+Les enregistrements sont reliés entre eux par des pointeurs.
+Contrairement aux modèles hiérarchiques, l'organistion des liens n'est pas obligatoirement
+hiérarchiques, cequi rend ces modèles plus polyvalent.
+
+nul:
+- Dans les modèles de données relationnels, un attribut peut avoir une valeur nulle,
+indiquant que la donnée est absente, non disponible ou inapplicable
+
+clé primaire:
+- Dans le modèle de données relationnels, la clé primaire est un attribut dont le contenu est différent
+pour chaque enregistrement.
+Cela permet de target simplement
+equivalent ID
+
+clé étrangère:
+- attribut qui contient une référence à une donnée connexe dans les
+faits la valeur le la clé primaire de la donnée connexe.
+
+intégrité référentielle:
+- Il y a situation d'intégrite référentielle lorsque toutes les données référencées par des  clés
+étrangère sont présentes dans la base de données.
+
+bancarisation:
+- c'est l'opération consistant à réunir des données dans une banque de donnée.
+Dans la plupart des pays, elle est par la loi, au moins dans le cas de données environnementales, publiques ou personnelles.
