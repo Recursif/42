@@ -164,3 +164,151 @@ intégrité référentielle:
 bancarisation:
 - c'est l'opération consistant à réunir des données dans une banque de donnée.
 Dans la plupart des pays, elle est par la loi, au moins dans le cas de données environnementales, publiques ou personnelles.
+
+
+Typologie:
+- L'usage qui est fait des données diffère d'une base de données à l'autre.
+Les bases de données peuvent être classifiées en fonction du nombre d'usagers,
+du type de contenu, notamment s'il est faiblement ou fortement structuré,
+ainsi que selon l'usage qui est fait de la base de données,
+notamment l'utilisation opérationnelle ou à des fin d´analyse:
+Une base de données de bureau est installée sur un ordinateur personnel au service d'un seul usager.
+Tandis qu'une base de données d´entreprise est installée sur un ordinateur puissant au service de centaines d'utilisateurs.
+Une base de données centralisée est installée dans un emplacement unique,
+tandis qu'une « base de données distribuée » est répartie entre plusieurs emplacements.
+
+Les bases de données dites opérationnelles ou OLTP (de l'anglais online transaction processing)
+sont destinées à assister des usagers à tenir l'état d'activités quotidiennes.
+Elles permettent en particulier de stocker sur le champ les informations relatives à chaque opération effectuée dans le cadre de l'activité :
+achats, ventes, réservations, paiements
+
+Accent sur la vitesse de réponse et la capcité de traiter plusieurs opérations simultanément.
+
+Les bases de données d'analyse dites aussi OLAP (de l'anglais online analytical processing),
+sont composées d'informations historiques telles que des mesures sur lesquelles sont effectuées des opérations massives en vue d'obtenir des statistiques et des prévisions.
+Les bases de données sont souvent des entrepôts de données (anglais datawarehouse) :
+des bases de données utilisées pour collecter des énormes quantités de données historiques de manière quotidienne depuis une base de données opérationnelle.
+
+Accent sur la capacité d'effectuer du traitement.
+Le logiciel moteur (SGDB) est essentiellement un moteur d'analyse.
+
+Des données structurées sont formatées en fonction de l'usage qui va en être fait, en vue de faciliter le stockage.
+
+1956 : disque dur > bande magnétique
+
+1964 : Database : collection d'info partagées par différents utilisateurs d'un système d'info militaire.
+
+1960 : première db hiérarchique
+
+1968 : Dick Pick Os contenant un SGDB "multivaluée"
+
+1970 : Edgar Codd l'algèbre relationnelle.
+
+1975 : Peter Chen modèle entité-association
+
+relation = l'ensemble des infos d'une table
+association = lien logique entre deux tables connexes
+
+# Construction
+
+Les étapes clefs du cycle de vie d'une base de données sont la conception et la mise en service.
+
+Avant la conception, les utilisateurs et les producteurs des informations sont interviewés en vue de prendre
+connaissance des caractéristiques des informations, des relations entre les informations,
+ainsi que les caractéristiques du système informatique qui accueillera la base de données.
+
+L'objectif de cette étape est de recueillir les caractéristiques des informations dans la pratique,
+et les besoins des usagers, et de les formuler d'une manière simple, compréhensible autant par les usagers que les administrateurs de base de données.
+
+Puis, sera créé un schéma d'ensemble du réseau d'informations et de relations, sous forme de diagramme comportant des entités, des attributs et des relations
+ce plan est ensuite transformé en instructions formulées dans le langage de commande du SGBD
+et les instructions sont exécutées en vue de créer la structure de la base de données et la rendre opérationnelle.
+
+La définition de l'organisation interne d'une base de données - son modèle de données physique -
+est l'étape finale de sa construction.
+Cette opération consiste tout d'abord à définir des enregistrements correspondant
+au modèle de données logique.
+
+Les enregistrements sont stockés dans des fichiers,
+et chaque fichier contient typiquement un lot d'enregistrements similaires.
+
+
+La qualité du modèle de données physique a un impact majeur sur la vitesse des opérations sur la base de données.
+Une simple amélioration peut rendre les opérations sur les données 50 fois plus rapides,
+différence d'autant plus sensible qu'il y a une grande quantité de données.
+Au début des années 2000, il existe des bases de données contenant plusieurs téraoctets (1012) de données et des ingénieurs indépendants dont l'activité consiste uniquement à aider des clients à accélérer leurs bases de données.
+
+Une fois opérationnelle, des opérations de surveillance permettent de déceler des problèmes susceptibles de nécessiter des modifications du schéma.
+
+L'organisation logique des données est indépendante de leur organisation physique.
+Ce qui signifie que la position des données dans les fichiers peut être entièrement modifiée sans que leur organisation sous forme d'enregistrements dans des tables ne soit touchée.
+
+ Les enregistrements sont typiquement regroupés en grappes (anglais cluster), dont la taille est alignée sur une taille optimale pour le matériel (disques durs).
+
+
+Arbre B, une structure souvent utilisée.
+Les principales techniques utilisées dans le modèle de données physique sont les index, les vues matérialisées et le partitionnement. Le stockage des données se fait souvent par des dispositifs RAID
+et le SGBD utilise des techniques telles que les tables de hachage, les arbres B, les bitmaps ou les fichiers ISAM :
+
+Index:
+  Un index est un lot de données destiné à les opérations de recherches de données.
+  La structure de l'index comporte des valeurs associées à des pointeurs où chaque pointeur permet de retrouver la donnée a cette valeur.
+
+Partitionnement:
+  Dans la technique du partitionnement, le SGBD répartit les données entre plusieurs disques durs,
+  ce qui accèlere les op en diminuant la quantité de travail par disque.
+
+RAID (Redundant array of inexpensive disk):
+  Dans la technique RAID, un dispositif matériel répartit les données entre plusieurs disques durs,
+  ce qui accélère les opérations et évite la perte d'informations en cas de panne.
+
+Table de hachage (anglais hashing):
+  Dans cette organisation, une fonction de hachage est utilisée.
+  Une telle fonction transforme par calcul arithmétique une valeur quelconque en un nombre entier.
+  Le nombre obtenu est utilisé pour déterminer l'emplacement exact où sera enregistrée la donnée de cette valeur.
+
+Arbre B
+  L'arbre B est une structure en arbre où toutes les branches ont la même longueur,
+  et chaque nœud comporte entre N/2 et N branches.
+  C'est une structure très souvent utilisée pour les index.
+
+Bitmap
+  Les index en bitmap sont souvent utilisés pour des données où il n'existe que peu de valeurs possibles
+  exemple : genre M/F, jour de la semaine…).
+  Pour chacune des valeurs possibles de la donnée l'index comporte un tableau de bits où le Nième bit est à « 1 » si la Nième donnée a la valeur en question.
+
+ISAM (pour Indexed sequential access method):
+  Dans cette organisation les enregistrements sont stockés triés selon la clé primaire,
+  dans une structure découpée en cylindres et pistes de taille fixe.
+  Chaque piste comporte un espace de réserve pour permettre l'insertion de nouveaux enregistrements.
+
+Journal:
+  Un journal contient la liste des dernières opérations effectuées sur la base de données.
+  Ce journal est utilisé par le moteur de base de données pour annuler les opérations,
+  par exemple en cas de crash informatique, ou si les opérations comportent une erreur. voir aussi Transaction informatique.
+
+
+Les bases de données sont de plus en plus souvent mises à disposition de leurs utilisateurs sur des serveurs, via l'internet ou sur des serveurs locaux pour une sécurité plus optimale.
+
+Dans une application informatique de billetterie informatisée, les billets de voyage ou de concert sont enregistrés dans une base de données.
+
+Le Système d'information Schengen est une application de base de données utilisée par les services de police et des douanes de l'Espace Schengen,
+ en Europe pour collecter et s'échanger des renseignements judiciaires (mandat d'arrêts, empreintes digitales, interdictions de séjour…)
+
+ ITIS est une application informatique qui contient un catalogue de taxinomie des espèces vivantes (végétaux, animaux, champignons, microorganismes…).
+
+ La CIA, agence de renseignements aux États-Unis possède une des plus grandes banques de données au monde.
+
+ Le catalogue de la librairie en ligne amazon.com est une des plus grandes bases de données au monde avec plus de 250 millions d'ouvrages catalogués.
+
+ La société Amazon.com est également propriétaire de la banque de données filmographique IMDb.
+
+Dans les logiciels de forums ou de messagerie électronique, les messages sont souvent enregistrés dans une base de données.
+
+Les logiciels antivirus utilisent souvent une base de données dans laquelle sont enregistrées les empreintes laissées par les virus informatiques.
+
+Un progiciel de gestion intégrée tel que SAP ERP (de la société SAP AG) comporte un ensemble de logiciels qui utilisent tous la même base de données.
+
+Un « enterprise resource planning » (ERP) est un système d'informations qui sert à la collecte et la maintenance des informations concernant l'activité d'une entreprise (ventes, achats, salaires…)
+
+Un système d'information géographique est un système d'informations qui permet de collecter, manipuler des renseignements de cartographie (coordonnées de routes, de forêts, de plans d'eau).
