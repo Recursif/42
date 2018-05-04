@@ -32,14 +32,3 @@ function render() {
 
 render()
 store.subscribe(render)
-
-/*
-First we import our Saga from the ./sagas module.
-
-Thenwe create a middleware using the fonction createSagaMiddleware
-exported by the redux-saga library.
-
-Before running our helloSaga, we must connect our midddleware to the store
-using applyMiddleware.
-Then we can use the sagaMiddleware.run(helloSaga) to start our Saga.
-*/
