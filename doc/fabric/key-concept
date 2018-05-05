@@ -1,5 +1,5 @@
 
-#Intro
+##Intro
 
 Hyperledger Fabric is a platform for distribued
 ledger solutions underpinned by a modular architecture
@@ -10,7 +10,9 @@ Distributed ledger that records all the tx that takes place on the network
 
 append-only, using crypto techniques that guarantee that tx can't be modified
 
-# Smart contract
+
+
+## Smart contract
 
 smart contracts provides controlled access to the ledger
 
@@ -20,21 +22,78 @@ they can also be written to allow participants to execute certain aspects of tx 
 A smart contract can, for example, be written to stipulate the cost of shipping
 an item that changes depending on when it arrives.
 
-With the terms agreed to by both parties and written to the ledger, the appropriate funds change hands automatically when the item is received.
+With the terms agreed to by both parties and written to the ledger,
+the appropriate funds change hands automatically when the item is received.
 
-# Consensus
+
+
+## Consensus
 
 The process of keeping the ledger tx synchronized across the network
 to ensure that ledgers update only when tx are approved the appropriate participants,
 and that when ledgers do update, they update with the same tx in the same order.
 
-
-Hyperledger Fabric provides a membership identity service that manages user IDs and
-
+Hyperledger Fabric provides a membership identity service that manages user IDs.
 
 Hyperledger Fabric assigns network roles by node type.
 
-To provide concurrency and parallelism to the network, transaction execution is separated from transaction ordering and commitment.
-
+To provide concurrency and parallelism to the network,
+transaction execution is separated from transaction ordering and commitment.
 
 so processes on one can run independently of verification by the other.
+
+
+
+## Fonctionalities
+
+Identity management
+
+Privacy and confidentiality
+
+Efficient processing
+
+Chaincode functionality
+
+Chaincode applications encode logic that is invoked by specific types of transactions on the channel.
+
+Modular design
+
+
+
+## Model
+
+Assets:
+  Asset definition enable the exchange of almost anything
+  with monetary value over the network.
+
+  Assets are represented in Hyperledger Fabric as a collection of key-value pairs,
+  with state changes recorded as transactions on a Channel ledger.
+  Assets can be represented in binary and/or JSON form.
+
+Chaincode:
+  Chaincode execution is partitioned from tx
+  ordering, limiting the required levels of trust and verification
+  across node types, and optimizing network scabilibility and performance.
+
+  Chaincode is software defining an asset or assets,
+  and the transaction instructions for modifying the asset(s).
+
+Leadger features:
+  Thes immutable, shared ledger encodes tx history for each channel
+  and includes SQL-like query capability for efficient auditing and dispute resolution.
+
+Privacy through Channels:
+  Channels enable multi-lateral transactions with the high degrees of privacy and confidentiality
+
+Security and Membership Services:
+  Permissionnned Membership
+  provides a trusted blockchain network, where participants know
+  that all tx can be detected and traced by authorize regulators and auditors.
+
+Consensus:
+  Prior to commitment, the peers will employ these system chaincode
+  to make sure that enough endorsements are present,
+  and that they were derived from the appropriate entities.
+  Moreover, a versioning check will take place during which the current state
+  of the ledger is agreed or consented upon,
+  before any blocks containing transactions are appended to the ledger.

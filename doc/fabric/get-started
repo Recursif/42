@@ -1,3 +1,6 @@
+
+# Hyperledger:
+
 Hyperledger Fabric is a platform for distributed ledger solutions,
 underpinned by a modular architecture delivering high degrees of confidentiality,
 resiliency, flexibility and scalability.
@@ -29,7 +32,5 @@ Everyone working together while ensuring
 Confidentiality
 Scalability
 Security
-
-
 
 Set curl / docker / node or go sdk and GOOOOO!
