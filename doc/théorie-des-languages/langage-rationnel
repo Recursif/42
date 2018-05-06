@@ -101,4 +101,117 @@ Formellement, cela signifie que l'on identifie des expressions qui se déduisent
 l'une de l'autre par l'application de ces règles.
 
 On ajoute parfois aussi, aux opérateurs sur les expressions,
-la fermeture +, donnant l'expression e+
+la fermeture +, donnant l'expression e+.
+Le langage dénoté est donné par L(e+) = L(e)+, au sens de Opérateur plus.
+
+En revanche, l'opérateur de complémentation ne fait pas partie des opérations définissant
+les expressions rationnelles.
+
+Dans les expressions régulières fournis par de nombreux outils de programmation ou d'édition,
+comme Unix, qed, grep, Emacs, d'autres opérateurs sont généralement ajoutés,
+avec des propriétés qui les rendent capables de décrire des langages qui ne sont pas rationnels.
+
+
+
+## Expressions rationnelles et automates
+
+### Le théorème de kleene
+
+Le théorème de Kleene affirme que l'ensemble des langages rationnels sur un alphabet A est
+exactement l'ensemble des langages sur A reconnaissables par un automate fini.
+C'est le résultat fondamental pour la théorie et les applications.
+
+La corresondance entre langages rationnels et langages reconnaissables est effective:
+pour toute expression regulière, on peut construire effectivement,
+et de plusieurs facons, des automates qui reconnaissent le langage denoté par l'expression.
+Réciproquement, à tout automate fini on peut associer une expression régulière qui dénote le langage reconnu par l'automate.
+Là aussi, il y plusieurs méthodes, et on peut obtenir des expressions différentes, mais équivalentes.
+
+
+### Hauteut d'étoile
+
+La hauteur d'étoile d'une expression rationnelle e est le nombre h(e)
+défini récursivement comme suit:
+
+- h(0) = h(1) = h(a) = 0 pour toute lettre a
+- h(e + f) = h(e.f) = max{h(e), h(f)}
+- h(e*) = 1 + h(e)
+
+En d'autre termes, la hauteur d'étoile d'une expression est le nombre maximun
+d'étoiles imbriquées.
+Ex: h((a + b)*) = 1 et h((a*b)*a*) = 2
+
+Ces deux expressions dénotent le même langage,
+donc la notion de hauteur d'étoile est liée à l'expression.
+
+La hauteur d'étoile d'un langage rationnel X est le minimun des hauteurs d'étoile des expressions
+dénotant ce langage, càd:
+
+h(X) = min{h(e) | L(e) = X}
+
+La question de l'existence de langages rationnels de hauteur d'étoile
+arbitrairement grande a été posée par Eggan et résolue par Françoise Dejean
+et Marcel-Paul Schützenberger.
+Le problème de la hauteur d'étoile est de calculer, de manière efficace,
+la hauteur d'étoile d'un langage rationnel.
+Ce problème a résisté longtemps. Il a été résolu la première fois en 1982 ;
+le meilleur algorithme, dû à Kirsten, est de 2005.
+
+!!!! Une question qui est toujours ouverte en 2016 concerne
+le problème de la hauteur d'étoile généralisée.
+
+
+Si l'on autorise, comme opérateur supplémentaire,
+l'opérateur de complémentation,
+le pouvoir de description des expressions rationnelles
+(appelées généralisées) augmente bien entendu.
+On ne sait toujours pas s'il existe des langages rationnels de hauteur d'étoile
+généralisée arbitrairement grande (ni même de hauteur 2).
+
+Les langages de hauteur d'étoile généralisée 0 sont les « langages sans étoile »
+caractérisés par Marcel-Paul Schützenberger.
+
+
+### Le théorème de Myhill-Nerode
+
+A tout langage L de A*, on associe une relation d'équivalence == sur A*
+défini de la façon suivante:
+
+u == Lv si et seulement si pour tout mot x de A*,
+on a ux C L <=> vx C L
+
+Le théorème de Myhill-Nerode affirme qu'un langage L est rationnel si est seulement si
+la relation == est d'indice fini, càd possède un nombre fini de classe d'équivalence.
+
+Ce théorème a un intérêt théorique puisqu'il donne une caractérisation intrinsèque
+de l'automate minimal reconnaissant un langage donné.
+En effet, les états de l'automate fini déterministe minimal reconnaissant un
+langage rationnel L sont en bijection avec les classes d'équivalence de la relation ==.
+Ce résultat est aussi à la base d'un algorithme efficace de minimisation,
+appelé l'algorithme de Moore.
+
+
+
+## Propriétés
+
+### Propriétés algébriques
+
+- les langages rationnels sont fermés, en plus de l'union,
+du produit et de l'étoile, par complémentation et donc par intersection.
+
+- Les langages rationnels sont fermés par image miroir:
+si X est un langage rationnel, alors Xr est rationnel,
+où Xr est l'ensemble des retournés ou images miroir des mots de X.
+
+- L'ensemble des préfixes, l'ensemble des suffixes,
+l'ensemble des facteurs, l'ensemble des sous-mots des mots
+d'un langage rationnel est un langage rationnel.
+
+- Pour tout langage rationnel X et tout mot u, le quotient gauche
+
+u-1*X = {w | uw C X}
+est un langage rationnel.
+
+- L'image d'un langage rationnel par un morphisme est un langage rationnel.
+
+- L'image par un morphisme inverse d'un langage rationnel est un langage rationnel.
