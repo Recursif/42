@@ -1,22 +1,38 @@
-#Grammaire : c'est l'étude systématique des éléments constitutifs
+
+# Grammaire:
+
+c'est l'étude systématique des éléments constitutifs
 d'une langue.
 
-Une grammaire formel permet de definir une syntaxe
+
+
+# Grammaire Formelle:
+
+Une grammaire formelle permet de definir une syntaxe
 et donc un language formel.
 
-Grammaire formel est utilisé en programmation compilation
+Une grammaire formelle est utilisé en programmation compilation
 analyse syntaxique, en théorie de la calculabilité
 et dans le traitement des languages naturelles
 (morphologie de syntaxe).
+
+
+
+## Language
 
 Un language est un ensemble de mots, qui sont
 simplement des séquences de symboles choisis dans
 un ensemble appelé alphabet.
 
-Formellement, si A est un ensemble,
-on note A* le monoïde libre sur A,
-c'est-à-dire l'ensemble des suites finies d'éléments
-de A, muni de l'opération de concaténation de deux mots.
+
+
+## Théorie
+
+Formellement, si A est un ensemble, on note A* le monoïde libre sur A.
+
+C'est-à-dire l'ensemble des suites finies d'éléments de A,
+muni de l'opération de concaténation de deux mots.
+
 Un langage sur l'alphabet A est par définition un sous-ensemble
 de A*.
 
@@ -27,49 +43,65 @@ A2 = { 2, 5, @, $, & } est un autre alphabet contenant 5 symboles ;
 A3 = { Dét, Adj, Verbe, Nom, Coord, Prép } est un alphabet de 6 symboles pouvant décrire, par exemple, la structure syntaxique d'une phrase dans une langue naturelle.
 
 
-##Lexème
+
+## Lexème
+
 Le lexeme est le morphème lexical d'un lemme, c'est à dire
 une unité de sens et de son qui n'est pas fonctionnelle ou
 derivationnelle.
+
 lexème = radical
 
-##Grammaires formelle:
+
+
+## Grammaires Formelles Def Mathématique
+
 Une grammaire formelle est constituée de quatre objets:
-- un ensemble fini de symboles, appelé symboles terminaux minuscule
-- un ensemble fini de symboles, appelé symboles non-terminaux majuscule
+- un ensemble fini de symboles, appelé symboles terminaux (écrit en minuscule)
+
+- un ensemble fini de symboles, appelé symboles non-terminaux (écrit en majuscule)
+
 - un élément de l'ensemble des non-terminaux, appelé axiome, noté conventionnellement S
-- un ensembles de regles de production, qu sont des paires formées d'un non-terminal et d'une suite de terminaux
-par ex: A -> ABa
+
+- un ensembles de règles de production,
+qui sont des paires formées d'un non-terminal et d'une suite de terminaux
+Ex: A -> ABa
+
+Cf symboles-terminaux-non-terminaux
 
 
-Un language formel défini (ou engendré) par Une
-grammaire particulière est l'ensemble des chaines ou mots de caractères terminaux
-produites par la Grammaire
+Un language formel défini (ou engendré) par une grammaire particulière
+est l'ensemble des chaines ou mots de caractères terminaux produites par la grammaire.
+
 Les non terminaux n'étant pas constuits entièrement de terminaux ne peuvent pas
 apparaitre comme lexèmes appartenant au language.
+
 Dans un contexte d'analyse syntaxique, étant opposé à la théorie
 des langages de programmation et des compilateurs, les termes symboles terminal et jeton
 sont souvent considérés synonymes.
 
-
 Appliquer une règle de production consiste à remplacer
 dans un mot  une occurence du membre de gauche de cette règle par son membre de droite.
 l'application successive de règles de productions s'appelle une dérivation.
+Ex A -> Abn -> Abnbn
+
 
 Le language défini par une grammaire est l'ensemble dse mots formés uniquement
 de symboles terminaux qui peuvent être atteints par dérivation à partir de l'axiome.
 
-Ainsi, la grammaire définie par les terminaux {a, b}, le non-terminal S, l'axiome S et les deux règles de production suivantes :
+Ainsi, la grammaire définie par les terminaux {a, b}, le non-terminal S,
+l'axiome S et les deux règles de production suivantes :
 
-S -> aSb
-S -> e (e = l'ensemble vide)
+  S -> aSb
+  S -> e (e = l'ensemble vide)
 
 représente le langage des mots de la forme a^n*b^n
 { e, ab, aabb, aaabbb, ...}
 
 
 
-##Hierarchie de Chomsky:
+## Hierarchie de Chomsky:
+
 4 niveaux du plus restrictif au plus large:
 
 - languages de type 3, languages rationnels:
@@ -78,53 +110,66 @@ ce sont les languages définis par une grammaire linéaire à gauche
 et une grammaire linéaire à droite
 (c'est-à-dire une grammaire dont chaque membre droit de règle finit par un non-terminal)
 ou une expression rationnelle ( expression regulière)
-langages reconnus par un automate fini.
+
+Ces langages sont reconnus par un automate fini.
 
 - langages de type 2, langages algébriques:
 ce sont les langages définis par une grammaire algébriques,
 langages reconnaissable par un automate à pile non déterministe.
+
 La plupart des langages de programmation, sans être à proprement parler
 des langages algébriques, en sont assez proches pour que les techniques d'analyse
 des langages s'y adaptent.
 
-- langages de type 1, langage contextuels: ce sont les langages définis par
-une grammaire contextuelle, ou encore les langages reconnaissable par une machine de turing
-non deterministe à ruban de longueur borné par un multiple fixé de longueur fixé de la longueur du
-mot d'entrée, appelé automate linéairement borné.
+- langages de type 1, langage contextuels:
+ce sont les langages définis par une grammaire contextuelle,
+ou encore les langages reconnaissable par une machine de turing
+non deterministe à ruban de longueur borné
+par un multiple fixé de longueur du mot d'entrée,
+appelé automate linéairement borné.
 
 - langages de type 0, langages récursivement énumérables.
 Cet ensemble inclut tous les langages définis par une gramaire formelle.
-C'est aussi l'ensemble des langages acceptables par une machine de turing
+C'est aussi l'ensemble des langages acceptables par une machine de turing.
+
 
 Il existe aussi des classes intermédiares:
  - Les langages algébriques déterministes, reconnaissables par
  un automate à pile déteriniste;
  la famille des langages algébriques inambigus.
+
  - Les langages récursif, cad reconnaissables par une Machine de turing
  (celle ci doit refuser les mots qui ne sont pas du langage).
 
 
-## analyse
+
+## Analyse
 
 Un analyseur pour un langage formel est un programme informatique qui décide si un mot
 donné en entrée appartient ou non au langage, et éventuellement en construire une dérivation.
 
-Les interpreteur et les compilateur comprennent presque toujours une phrase d'analyse
-lexical, qui consiste à reconnaitre des langages de types 3,  suivie d'une phase d'analyse
-syntaxique qui est une analyse de langage de type 2.
+Les interpreteur et les compilateur comprennent presque toujours une phrase d'analyse lexical,
+qui consiste à reconnaitre des langages de types 3,
+suivie d'une phase d'analyse syntaxique qui est
+une analyse de langage de type 2.
 L'analyse lexical porte sur une suite de caractères et produit une suite de lexèmes,
 qui servent à leur tour d'élément d'alphabet lors de l'analyse syntaxique.
 
-Des outils comme lex et yacc facilitent l'écriture, respectivement, d'analyseurs lexicaux et syntaxiques,
-en produisant automatiquement des portions de programmes à partir d'une spécification de ce
-langage.
-Les constructeur d'analyseurs syntaxiques utilisent souvent yune variante de la forme de Backus-Naur,
-qui est une notation pour les grammaires hors-contexte; tandis que les coibstructeurs d'analyseurs lexicaux
+Des outils comme lex et yacc facilitent l'écriture, respectivement,
+d'analyseurs lexicaux et syntaxiques,
+en produisant automatiquement des portions de programmes
+à partir d'une spécification de ce langage.
+
+Les constructeur d'analyseurs syntaxiques utilisent
+souvent yune variante de la forme de Backus-Naur,
+qui est une notation pour les grammaires hors-contexte.
+
+Tandis que les constructeurs d'analyseurs lexicaux
 emploient le formalisme moins lourd des expressions rationnelles.
 
 
 
-Expression arithmériques:
+## Expression arithmériques:
 
 exp ::= exp + exp
       | exp × exp
@@ -148,7 +193,8 @@ sans rendre compte de la priorité des opérateurs.
 Cette grammaire ne distingue pas (1 + 2) x 4 de 1 + (2 x 4)
 
 
-Langage de programmation:
+
+## Langage de programmation:
 
 Pascal: fact(10)
 begin
@@ -188,11 +234,14 @@ program ::= ''begin'' listinstr ''end''
  toutes les variable ont été déclarées (pour cela grammaire de type 1).
   Il faudrait aussi ajouter des règles pour num (comme plus haut) et pour id.
 
-Logique proportionnelle
+
+
+## Logique proportionnelle
 
 L-système ou système de Lindemayer:
-grammaire formelle générative ayant vocation à décrire
-les developpement du vivant : champignons plantes ...
+  grammaire formelle générative ayant vocation à décrire
+  les developpement du vivant : champignons plantes ...
+
 
 Equivalence forte entre grammaire:
 - elles reconnaissent éxactement le même language

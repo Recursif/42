@@ -1,40 +1,78 @@
-En théorie des langages
 
-Une théorie est un ensemble cohérnent d'explications,
-de notions ou d'idées sur un sujets précis,
-pouvant inclure des lois et des hypothèses, induites
-par l'accumulation de faits provenant de l'observation,
-l'experimentation ou, dans le cas des mathématiques,
-déduites d'une base axiomatique donnée:
-théorie des matrices, des torseurs des probabilités.
+# Langage Rationnel
 
-Le terme de théoricien qui est un scientifique
-s'oppose à celui de technicien qui est chargé de mettre en
-pratique une science particulière.
+En théorie des langages, les langages rationnels
+ou langages réguliers ou reconnaissables
+peuvent être décrits de plusieurs facons équivalentes:
+- ce sont les langages décrits par les expressions régulières
+ou rationnelles, d'ou le nom de langages réguliers;
+- ce sont les langages obtenus, à partir des lettres
+et de l'ensemble vide, par des opérations rationnelles,
+à savoir l'union, le produit et l'étoile de Kleene,
+d'ou le nom de langages rationnels.
+- ce sont les langages reconnus par des automates finis, d'ou le nom de langages reconnaissables.
 
-Une théorie doit permettre de réaliser des prédictions
-sur ce qui va être observé.
-Enfin la théorie doit resister a l'expérience.
+Les langages rationnels sont utilisés en info(compilation),
+en linguistique(morphologie d'une langue),
+ils interviennent dans les traitements de texte,
+ou dans des commandes bien précises comme grep dans Unix.
 
-La théoie doit rester compatible avec les nouveaux faits.
-Sinon elle doits être corrigé.
+Pour la manipulation des langages rationnels et des automates,
+il existe de nombreux outils infos,
+notamment la commande lex ou la classe Pattern en Java.
 
-C'est dans la durée que se juge une théorie.
 
-En maths, c'est un ensemble d'affirmations dont certaines sont des axiomes
-et les autres des théorèmes démontrables à partir de ces axiomes et
-au moyen de règle de la logique.
 
-Pour qu'une théorie soit considérée comme faisant partie
-des connaissances établies, il est habituellement nécessaire que celle-ci
-produise une expérience critique, c'est à dire un résultat expérimantal
-non prédictible par une autre théorie.
+## Def Courte
 
-- Si les conséquences prévues ne sont pas contredites par la réalité
-observée et mesurée, alors la théorie et ses principes se
-trouvent confortés (inférence bayésienne).
+On considère un ensemble fini A de caractères ou lettres, appelé alphabet.
+Une chaîne de caractères ou de mots est une suite finie,
+éventuellement vide, de caractères.
+Ex: le chaîne formée de la lettre a, puis de la lettre b,
+puis encore de la lettre a, de note aba.
 
-- Si apparaissent des faits observés et mesurés que la théorie ne prévoit pas,
-alors soit il faut soit modifier la théorie, soit en préciser les limites.
+L'ensemble des mots que l'on peut former avec ces lettres de A est noté A*.
+Toute partie de A* s'appelle un langages.
 
-- Si la théorie prédit des effets, alors il faut chercher à les observer et à les mesurer.
+
+
+## Opérations rationnelles
+
+Les opérations suivantes, définies sur les langages, sont appelées les opérations rationnelles.
+
+Soient X et Y deux parties de A*:
+
+- La concaténation ou le produit de X et Y, noté XY,
+est l'ensemble de mots xy, où x est dans X
+et y est dans Y.
+Ex: le produit de {ab, c} et de {ba, c} est {abba, baab, abc, bac, cc};
+
+- l'union ensembliste, de X et Y, notée X U Y,
+est l'ensemble de mots apparenant à X ou à Y.
+Ex: l'union ensembliste de {ab, c} et {ba, c} est {ab, ba, c};
+
+- l'étoile de kleene, noté X* est le plus petit langage qui contient le mot vide e,
+le langage X, et qui est clos pour l'opération de concaténation.
+C'est aussi l'ensemble de tous les produits de tous les mots de X.
+Ex: {a, ab}* =  {e, a, aa, ab, aaa, aba, aab, aaaa, abaa, aaba, aaab, abab, ...};
+
+
+
+## Langages rationnels Def Mathématique
+
+L'ensemble des langages rationnels sur l'alphabet A est
+le plus petit ensemble de langages stable
+pour les opérations rationnelles, qui contient le langage vide !0,
+les langages réduit à des lettres et le langage composé du mot vide {e}.
+
+
+
+ ## Expressions rationnelles
+
+ Les expressions rationnelles sur l'alphabet A sont
+ des expressions obtenues à partir des constantes 0, 1,
+ et de constantes a, pour les lettres a de A,
+ par les opérations suivantes:
+ - L'opération + ou | (pour l'union)
+ - L'opération . (pour le produit)
+ - L'opération * (pour représenter l'étoile)

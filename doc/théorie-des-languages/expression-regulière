@@ -1,4 +1,5 @@
-Une expression regulière ou regex
+
+# Expression regulière ou regex:
 
 c'est une chaine de caractère qui décrit selon une
 syntaxe précise un ensemble de chainde caractères.
@@ -11,12 +12,17 @@ formelles que sont les langages informatiques.
 Ces expressions sont décrites par des patterns.
 
 
-En théorie des langages formels, une expression régulière est une expression représentant un langage rationnel.
+
+## Théorie
+
+En théorie des langages formels,
+une expression régulière est une expression représentant un langage rationnel.
 
 classe de caractères:
+
 -intension [0-9]
 -extension [0123456789]
-negativement [^0-9]
+-negativement [^0-9]
 
 quantificateurs:
 
