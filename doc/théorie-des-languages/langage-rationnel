@@ -76,3 +76,29 @@ les langages réduit à des lettres et le langage composé du mot vide {e}.
  - L'opération + ou | (pour l'union)
  - L'opération . (pour le produit)
  - L'opération * (pour représenter l'étoile)
+
+Chaque expression rationnelle E dénote un langage rationnel.
+Ce langage, noté L(e), est défini comme suit:
+
+- L(0) = !0, L(1) = {e}, L(a) = {a} pour chaque lettre a
+- L(E + f) = L(E) U L(f), L(E.f) = L(E)L(f), L(E*) = L(E)*
+
+e = mot vide
+!0 = ensemble vide
+
+Deux expressions rationnelles sont équivalentes si elles dénotent le même langage.
+
+Ex: Les expressions (a*b)*a* et (a + b)* sont équivalentes.
+
+Variantes:
+
+Pour diminuer les parenthères dans les expressions,
+on omet les parenthèses résultant de l'associativité des opérations,
+et de donner la plus haute priorité à l'étoile de Kleene,
+suivie de la concaténation, puis de l'union.
+
+Formellement, cela signifie que l'on identifie des expressions qui se déduisent
+l'une de l'autre par l'application de ces règles.
+
+On ajoute parfois aussi, aux opérateurs sur les expressions,
+la fermeture +, donnant l'expression e+
