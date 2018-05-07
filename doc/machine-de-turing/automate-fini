@@ -1,25 +1,34 @@
 
-Automate fini(nombre fini détats) finite state machine:
+# Automate fini
+
+Un automate fini (ou finite state machine):
 est un modèle mathématique de calcul, utilisé
 dans de nombreuses circomstances, allant de la conception
 de programmes informatiques et de circuit en logique séquentielle
-aux applications dans les protocoles de communication, en passant par le controle de processus.
+aux applications dans les protocoles de communication,
+en passant par le controle de processus.
 
-Un automate fini est un construction abstraite, susceptible d'étre dans
-un nombre fini d'états, mais à un moment donné est dans un seul état à la fois (l'état courant).
+Un automate fini est un construction abstraite,
+susceptible d'étre dans un nombre fini d'états,
+mais à un moment donné est dans un seul état à la fois (l'état courant).
 
 Le passage d'un état à un autre est appelé une transistion et est déclencher
 par un évènement ou une condition.
 
-Un automate particulier est décrit par l'ensemble de ses états et l'ensemble de ses transitions.
+Un automate particulier est décrit par
+l'ensemble de ses états et l'ensemble de ses transitions.
 
-On rencontre couramment des automates finis dans de nombreux appareils qui réalisent des actions déterminées
+On rencontre couramment des automates finis
+dans de nombreux appareils qui réalisent des actions déterminées
 en fonction des évènement qui se présentent.
- Ex distrubuteur aumatique / feux / digicodes
 
- Un automate fini à une mémoire limitée à son nombres d'états.
+Ex: distrubuteur aumatique / feux / digicodes
 
- modélisation de l'état sous la forme de graphe orienté.
+Un automate fini à une mémoire limitée à son nombres d'états.
+
+modélisation de l'état sous la forme de graphe orienté.
+
+
 
 
 
