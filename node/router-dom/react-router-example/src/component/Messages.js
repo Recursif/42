@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
+import Message from './Message';
 
-const Messages = () => (
+const Messages = ({match}) => (
   <div>
     <h2>Messages</h2>
     <ul>
@@ -16,7 +17,13 @@ const Messages = () => (
       })
     }
     </ul>
-    <Route path={`{match.url}/:id`} component={Message} />
+    <Switch>
+      <Route path={`${match.url}/:id`} component={Message} />
+      <Route
+        path={match.url}
+        render={() => <h3>Please select a message</h3>}
+      />
+    </Switch>
   </div>
 );
 

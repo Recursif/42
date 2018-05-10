@@ -140,4 +140,18 @@ Here are the properties of this object:
 - params: key/value pairs parsed from the URL
 - isExact: bool true if the url match
 - path
-- URL
+- url
+
+
+## Route properties
+
+- component: To render a component
+- render: A function that returns the element or component to be rendered
+- children: A function that also returns the element or component to be rendered.
+However, the returned element is rendered regardless of whether the path is matched or not.
+
+
+
+# Conclusion
+
+A router keeps your UI and URL in sync.
