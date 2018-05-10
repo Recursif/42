@@ -34,3 +34,81 @@ React Router is the most popular routing library for React. It allows you define
 routes in the sames declarative style.
 
 <Route path="/home" component={Home} />
+
+
+React Router includes three main packages:
+
+- react-router: the core package for the router
+
+- react-router: it contains the DOM bindings for React Router.
+In other words, the router components for websites.
+
+- react-router-native: It contains the React Native bindings for React Router.
+In other words, the router components for an app using react-native
+
+
+
+# Usage
+
+The React Router API is based on three components:
+- <Router> The router that keeps the UI in sync with the URL.
+
+- <Link> Renders a navigation Link
+
+- <Route> Renders a UI component depending on the URL
+
+## <Router>
+
+Choose a router implementation:
+
+<BrowserRouter>, which uses the HTML5 History API
+
+creates URLs with the following format
+
+http://localhost:3000/route/subroute
+
+
+
+The router can only have one children
+
+
+## <Link>
+
+Let's create a navigation menu
+
+
+
+JSX code:
+<ul>
+  <li> <Link to="/">Home</Link> </li>
+  <li> <Link to="/messages">Messages</Link> </li>
+  <li> <Link to="/about">About</Link> </li>
+</ul>
+
+generate the following HTML:
+<ul>
+  <li> <a href="/">Home</a> </li>
+  <li> <a href="/messages">Messages</a> </li>
+  <li> <a href="/about">About</a> </li>
+</ul>
+
+
+<Link> change the URL without refresh the page
+
+
+## Route
+
+Right now, the URL change but not the UI
+
+
+The matching logic of the <Route> component is delegated to the path to regexp library.
+
+express-route-tester.
+
+use the exact path="/" to avoid multiple rendering
+
+
+
+## Switch
+
+Switch is use if we know that only one path must be rendering at the same time
