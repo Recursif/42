@@ -112,3 +112,32 @@ use the exact path="/" to avoid multiple rendering
 ## Switch
 
 Switch is use if we know that only one path must be rendering at the same time
+
+
+## Redirect
+
+The default behavior can be implemented with a <Redirect> component
+
+
+## Nested routes
+
+A nested route is something like /about/like
+
+Let's say that for the messages section, we want to display a list of messages.
+
+Each one in the form of a link /messages/1, /messages2, and so on, that will lead you to a detail page.
+
+
+To understand how to implement this, you need to know that when a component is rendered by the router, three properties are passed as parameters:
+- match
+- location
+- history
+
+
+When there's a match between the router's path and the URL location,
+a "match" object is created with information about the URL and the path.
+Here are the properties of this object:
+- params: key/value pairs parsed from the URL
+- isExact: bool true if the url match
+- path
+- URL
