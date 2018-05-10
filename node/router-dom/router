@@ -1,0 +1,36 @@
+
+# router
+
+Single page applications (SPAs) rewrite sections of a page
+rather than loading entire new pages from a server.
+
+Twitter is a good example of this type of application.
+
+When you click on a tweet only the tweet's info is fetched from the server.
+
+These apps are easy to deploy and greatly improve the user exp, among other advantages.
+
+However, they also bring challenges.
+
+One of them is browser history.
+
+As the application is contained in a single page,
+it cannot rely on the browser's forward/back buttons per se.
+
+It need something that, according to the app state, changes the URL to
+push or replace URL history events within the browser.
+
+At the same time, it also needs to rebuil the application state from information contained within the URL.
+
+This is the job of a router.
+
+A router allows your application to navigate between different components,
+changing the browser URL, modifying the browser history, and keeping the UI state in sync.
+
+React is a popular library for building SPAs. However, as React focuses only on building user interfaces,
+it doesn't have a built-in solution for routing.
+
+React Router is the most popular routing library for React. It allows you define
+routes in the sames declarative style.
+
+<Route path="/home" component={Home} />
