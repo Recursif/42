@@ -15,3 +15,8 @@ prohibilively expensive.
 
 
 You render more app that your app rendered
+
+
+server-side rendering is only at the initial page's load
+
+solution componentDidMount
