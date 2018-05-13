@@ -10,7 +10,7 @@ var browserConfig ={
     publicPath: '/'
   },
   module: {
-    rules! [
+    rules: [
       { test: /\.(js)$/, use: 'babel-loader' },
     ]
   },
@@ -32,7 +32,7 @@ var serverConfig = {
   },
   module: {
     rules: [
-      { test: /\.(js)$/ use: 'babel-loader' }
+      { test: /\.(js)$/, use: 'babel-loader' }
     ]
   },
   plugins: [
@@ -42,4 +42,4 @@ var serverConfig = {
   ]
 }
 
-module.exports = [broswerConfig, serverConfig]
+module.exports = [browserConfig, serverConfig]
