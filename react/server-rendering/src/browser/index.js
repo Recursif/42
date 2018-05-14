@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 hydrate(
   <BrowserRouter>
     <App/>
-  <BrowserRouter>
+  </BrowserRouter>,
   document.getElementByID('app')
 )
 

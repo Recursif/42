@@ -35,15 +35,16 @@ class Grid extends Component {
   fetchRepos(lang) {
     this.setState(() => ({
       repos,
-      loading: false,
+      loading: false
     }))
 
     this.props.fetchInitialData(lang)
       .then((repos) => this.setState(() => ([
         repos,
-        loading: false,
-      ]))
+        loading: false
+      ])))
   }
+
   render() {
 
     const { repos, loading } = this.state
