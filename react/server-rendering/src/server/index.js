@@ -27,11 +27,11 @@ app.get('*', (req, res, next) => {
 
   promise.then((data) => {
     const context = { data }
-    const markup = renderToString(
+    const markup = renderToString(React.createElement(
       <StaticRouter location={req.url} context={context}>
         <App/>
       </StaticRouter>
-    )
+    ))
 
     res.send(`
      <!DOCTYPE html>
