@@ -52,12 +52,12 @@ when the URL changes, <Router /> will match a branch of its routes, and render t
 
 You Would declare in path the path used in the URL and in component the single component to be rendered when the route matches the URL.
 
-
 const Root = () => (
   <Router>
     <Route path="/" component={App} />
   </Router>
 )
+
 
 However, in our Redux app we will still need <Provider />.
 
@@ -232,4 +232,4 @@ const App = ({ match: { param } }) => {
 
 ## Next Steps
 
-Now 
+Now
