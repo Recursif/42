@@ -1,0 +1,93 @@
+
+# Preact Get-Started
+
+This guide aimed to build a simple "ticking clock" component
+
+You should use ES2015 to use Preact.
+
+You can start with preact-boilerplate (https://github.com/developit/preact-boilerplate)
+or codepen template (http://codepen.io/developit/pen/pgaROe?editors=0010)
+
+
+## Import what you need
+
+The preact module provides both named and default exports,
+so you can either import evrything under a namespace or choosing,
+or just what you need as locals:
+
+Names:
+
+import { h, render, Component } from 'preact'
+
+// Tell Babel to transform JSX into h() calls:
+/** @jsx h */
+
+Defaulft:
+
+import preact from 'preact'
+
+// Tell Babel to transform JSX into preact.h() calls:
+/** @jsx preact.h */
+
+Named imports work well for highly structured apps,
+whereas the default import is quick and never
+needs to be updated when using different parts of the library.
+
+Using via a CDN:
+
+<script src="https://cdn.jsdelivr.net/npm/preact/dist/preact.min.js"></script>
+
+
+## Global pragma
+
+Instead of declaring the @jsx pragma in your code,
+it's best to configure it globally in a .babelrc.
+
+
+Named:
+
+For Babel 5 and prior:
+
+{ "jsxPragma": "h"}
+
+For Babel 6 and 7:
+
+{
+  "plugins": [
+    ["transform-react-jsx", { "pragma": "h" }]
+  ]
+}
+
+
+Default:
+
+For Babel 5 and prior:
+ { "jsxPragma": "preact.h" }
+
+For Babel 6 and 7:
+
+{
+  "plugins": [
+    ["transform-react-jsx", { "pragma":"preact.h"}]
+  ]
+}
+
+
+
+## Rendering JSX
+
+Out of the box, Preact provides an h() function that turns your JSX
+into Virtual DOM elements (http://jasonformat.com/wtf-is-jsx).
+
+It also provides a render() function that creates a DOM tree from that Virtual DOM.
+
+To render some JSX, just import those tow functions and use them like so:
+
+import { h, render } from 'preact'
+
+render((
+  <div id="foo">
+    <span>Hello, world!</span>
+    <button onClick={ e => alert("hi!") }> Click Me</button>
+  </div>
+), document.body);

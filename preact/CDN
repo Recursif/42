@@ -1,0 +1,26 @@
+
+# CDN
+
+Un CDN (content delivery network): est constitué
+d'ordinateurs reliés en réseau à travers Internet et qui coopèrent afin de mettre
+à disposition du contenu ou des données à des utilisateurs.
+
+Ce réseau est constitué:
+
+- de serveur d'origine, d'où les contenus sont injetés dans le RDC pour y être répliqués;
+
+- de serveurs périphériques, typiquement déployés à plusieurs endroit géographiquement distincs,
+où les contenus des serveurs d'origine sont répliqués;
+
+- d'un mécanisme de routage permettant à une requête utiisateur sur un contenu d'être servie par le serveur
+le plus proche, dans le but d'oprimiser le mécanisme de transmission /livraison.
+
+
+Les serveurs ou noeuds sont généralement connectés à Internet à travers
+différentes dorsames Internet.
+
+L'optimisation peut se traduire par la réduction des coûts de bande passante,
+l'amélioration de l'expérience utilisateur, voire les deux.
+
+Le nombre de noeuds et de serveur qui constituent un RDC varie
+selon les choix d'architecture, certains pouvant atteindre plusieurs milliers de noeuds.
