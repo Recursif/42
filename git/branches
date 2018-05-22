@@ -1,0 +1,109 @@
+
+# Branches
+
+Presque tous les VCS proposent une certqine forme gestion de branches.
+
+Créer une nouvelle branche signifie diverger de la ligne principale de dév et continuer à travailler sans impacter cette ligne.
+
+La manière dont Git gère les branches est incroyablement légère et permet de réaliser
+les opérations sur les branches de manière quasi instantanée et, généralement,
+de basculer entre les branches aussi rapidement.
+
+À la différence de nombreux autres VCS,
+Git encourage des méthodes qui privilégient la création et la fusion fréquentes de branches,
+jusqu’à plusieurs fois par jour.
+
+
+Bien comprendre et maîtriser cette fonctionnalité vous permettra de faire de
+Git un outil puissant et unique et peut totalement changer votre manière de développer.
+
+## Les branches en bref
+
+Pour bien comprendre comment git gère les branches, nous devons revenir en arrière
+et examiner de plus près comment Git stocke ses données.
+
+Git ne stocke pas ses données comme une série de modifications ou de différences successives
+mais plutôt comme une série d’instantanés (appelés snapshots).
+
+Lorsque vous faites un commit, Git stocke un object commit qui contient un pointeur vers
+l'instantané (snapshop) du contenu que vous avez indexé.
+
+Cet objet contient également les noms et les prénoms de l'auteur, le message que vous avez renseigné ainsi que les pointeurs
+vers le ou les commits qui précèdes directement ce commit:
+ - aucun parent pour le commit initial,
+ - un parent pour un commit normal
+ - de multiples parents pour un commit qui résulte de la fusion d'une ou plusieurs branches.
+
+Pour visualiser de concept, supposons que vous avez un répertoire contenant trois fichiers que vous
+indexez puis validez. L'indexation des fichiers calcule une empreinte (checksum) pour chacun
+(via la fonction de hashage SHA-1 mentionnée au chapitre Démarrage rapide), stocke cette version du fichier
+dans le dépôt Git (Git les nomme blobs) et ajoute cette empreinte à la zone d'index (staging area):
+
+$ git add README test.rb LICENSE
+$ git commit -m 'initial commit of my project'
+
+Lorsque vous créez le commit en lançant la commande git commit, Git calcule l'empreinte de chaque sous-répertoire
+(ici, seulement pou le répertoire racine) et stocke ces objets de type arbre dans le dépôt Git.
+
+Git crèe alors un objet commit qui contient les méta-données et un pointeur vers l'arbre de la racine du projet de manière à pouvoir
+recréer l'instantané à tout moment.
+
+Votre dépôt Git contient à présent cinq objets: un blob pour le contenu de chacun de vos
+trois fichiers, un abre qui liste le contenu du répertoire et spécifie quels noms de fichier sont attachés
+à quels blobs et enfin un objet commit portant le pointeur vers l'arbre à de la racine ainsi que toutes les méta-données attachées au commit.
+
+
+Si vous faites des modifiactions et valides à nouveau, le prochain commit stocke un pointeur
+vers le commit le précédant immédiatement.
+
+Une branche dans Git est simplement un pointeur léger et déplacable vers un de cs commits.
+La branche par défaut dans Git s'appelle master. Au fur et à mesure des validations,
+la branche master pointe vers le dernier des commits réalisés.
+A chaque validation, le pointeur de la branche master avance automatiquement.
+
+La branche master n'est pas une branche spéciale. Elle est identique à toutes les branches.
+
+
+## Créer une  nouvelle branche
+
+Créer une nouvelle branche crée un nouveau pointeur pour vous.
+
+Supposons que vous créez une nouvelle branche nommée test.
+
+Vous utilisez pour cela la commande git branch:
+
+$ git branch development
+
+Cela crée un nouveau pointeur vers le commit courant.
+
+
+
+Git connait la branche sur laquelle on se trouve grâce à un pointeur spécial appelé HEAD.
+
+Vous remarquez que sous cette appelation se cache un concept très différent de celui utilisé dans les autres VCS
+tels que Subversion ou CVS. Dans Git, il s'agit simplement d'un pointeur sur la branche locale où vous vous trouvez.
+
+Dans ce cas, vous vous trouvez toujours sur master.
+
+La commande branch ne fait que créer une nouvelle branche mais elle nous fais pas basculer dessus.
+
+Vous pouvez vérifier cela facilement gràce à la commande git log qui vous montre vers quoi les
+branches pointent. Il s'agit de l'option --decorate.
+
+$ git log --oneline --decorate
+f30ab (HEAD, master, test) add feature #32 - ability to add new
+34ac2 fixed bug #ch1328 - stack overflow under certain conditions
+98ca9 initial commit of my project
+
+Vous pouvez voir les branches 'master' et 'test' qui  se situent au niveau du commit f30ab.
+
+
+## Basculer entre les branches
+
+Pour basculer sur une branches existante, il suffit de lancer la commande git checkout.
+
+Basculons sur la nouvelle branche testing:
+
+$ git checkout testing
+
+Cela déplace HEAD pour le faire pointer vers la branche testing
