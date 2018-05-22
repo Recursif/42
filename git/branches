@@ -107,3 +107,51 @@ Basculons sur la nouvelle branche testing:
 $ git checkout testing
 
 Cela déplace HEAD pour le faire pointer vers la branche testing
+
+
+$ vim test.rb
+$ git commit -a -m 'made a change'
+
+A présent, la branche dev à avancé tandis que la branche master pointe
+toujours sur le commit d'avant.
+
+Retournons sur la branche master :
+
+$ git checkout master
+
+Cette commande à réaliser deux actions.
+Elle a remis le pointeur HEAD sur la branche master et
+elle  a replacé les fichiers du  répertoire de travail dans l'état du snapshot pointé par master.
+
+Cela signifie ausi que les modifications vont diverger à partir de ce point.
+
+Cette commande annule les modifications que vous réalisez dans la branche dev pour
+repartir sur une autre direction.
+
+Réalisons quelsques autres modifications et validons à nouveau:
+
+$ vim test.rb
+
+$ git commit -m "made other changes"
+
+Ces deux modifications sont isolées dans des branches séparées:
+vous pouvez basculer d'une branche à l'autre et les fusionner quand vous êtes prêt.
+
+Et vous avez fait tout ceci avec de simples commandes: branch, checkout et commit.
+
+La commande : git log --oneline --decorate --graph --all
+va afficher l'historique de vos commits, affichant les endroits où sont
+positionnés vos pointeurs de branche ainsi que la manière dont votre historique a divergé.
+
+$ git log --oneline --decorate --graph --all
+
+Because a branch in Git is actually a simple file that contains the 40 character SHA-1 checksum
+of the commit it points to, branches are cheap to crzate and destroy. Creating a new branch is as quick
+and simple as writing 41 bytes to a file (40 characters and a newline).
+
+This is in sharp contrast to the way most older VCS tools branch,
+which involves copying all of the project's files into a second directory.
+
+This is instantaneous in Git.
+
+These features help encourage developers to create and use branches often.
