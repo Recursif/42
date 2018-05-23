@@ -1,0 +1,309 @@
+
+# webpack
+
+the popular module bundler gets a massive update.
+
+webpack 4, what's new?
+A massive performance improvement,
+zero configuration and sane defauls.
+
+
+# zero config module bundler
+
+webpack is powerful and has a lot of unique features but one of its pain point is the configuration file.
+
+
+# get starded
+
+
+webpack:
+
+npm i webpack --save-dev
+
+We need webpack-cli also, which lives as a separate package:
+
+npm i webpack-cli --save-dev
+
+Now open up package.json and add a build script:
+
+"scripts": {
+  "build": "webpack"
+}
+
+
+webpack 4 is looking for an entry point in ./src!
+
+In brief: the entry point is the file webpack looks for to start building your Javascript bundle.
+
+
+In webpack 4 there is no need to define neither the entry point, nor the output file.
+
+# Production and development mode
+
+Having 2 configuration files is a common pattern in webpack.
+
+A typical project may have:
+
+- a configuration file for development, for defining webpack dev server and other stuff
+- a configuration file for production, for defining UgliJSPlugin, sourcemaps and so on
+
+While bigger projects may still need 2 files,
+in webpack 4 you can get by without a single line of configuration.
+
+
+Now try to run:
+
+npm run dev
+
+and take a look at ./dist/main.js. What do you see? Yes, I know, a boring bundle… not minified!
+
+
+Now try to run:
+
+npm run build
+
+
+and take a look at ./dist/main.js. What do you see now? A minified bundle!
+
+
+Production mode all sorts of optmizations out of the box.
+
+Including minification, scope hoisting, tree-shaking and more.
+
+Development mode on the other hand is optimized for speed and does nothing more than
+providing an un-minified bundle.
+
+So here is the second news: webpack 4 introduces production and decelopment mode.
+
+In webpack 4 you can get by without a single line of configuration! Just define the --modeflag and you get everything for free!
+
+
+## Overriding the defaults entry/output
+
+I love webpack 4 zero conf but how overriging the default entry point?
+
+And the default output?
+
+Configure them in package.json!
+
+"scripts": {
+  "dev": "webpack --mode development ./foo/src/js/index.js --output ./foo/main.js",
+  "build": "webpack --mode production ./foo/src/js/index.js --output ./foo/main.js"
+}
+
+
+## Transpliling Javascript ES6 with Babel
+
+Modern Javascript is mostly written in ES6.
+
+But not every browser know how to deal with ES6.
+We need some kind of transformation.
+
+This transformation step is called transpiling.
+
+Transpilling is the act of taking ES6 and making it understandable by
+olders browsers.
+
+Webpack doesn't know how to make the transformation but has loaders:
+think of them as of transformers.
+
+babel-loader is the webpack loader for transpiling ES6 and above, down to ES5.
+
+To start using the loader we need to install a bunch of dependencies.
+
+In particular :
+
+- babel-core
+- babel-loader
+- babel-preset-env for compiling Javascript ES6 to ES5.
+
+npm i babel-core babel-loader babel-preset-env --save-dev
+
+Next up configure Babel by creating a new file named .babelrc inside the project folder:
+
+{
+    "presets": [
+        "env"
+    ]
+}
+
+
+At this point we have 2 options for configuring babel-loader:
+
+- using a configuration file for webpack
+- using --module-bind in your npm scripts
+
+
+The concept of zero configuration in webpack 4 applies to:
+-the entry point. Default to ./src/index.js
+-the output. Default to ./dist/main.js
+-production and development mode (no need to create 2 separate confs for production and development)
+
+
+### Using babel-loader with a configuration file
+
+Give webpack a configuration file using babel-loader in the most classical way.
+
+Create a new file named webpack.config.js and configure the loader:
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
+    ]
+  }
+};
+
+Next up open ./src/index.js and write some ES6:
+
+const arr = [1, 2, 3];
+const iAmJavascriptES6 = () => console.log(...arr);
+window.iAmJavascriptES6 = iAmJavascriptES6;
+
+
+
+### Using babel-loader without a configuration file
+
+The --module-bind flag lets you specify loaders from the command line.
+
+Thank you Cezar for pointing this out.
+
+The flag is not webpack 4 specific. It was there since version 3.
+
+To use babel-loader without a configuration file configure your npm scripts in package.json like so:
+
+"scripts": {
+"dev": "webpack --mode development --module-bind js=babel-loader",
+"build": "webpack --mode production --module-bind js=babel-loader"
+}
+
+
+## Setting up webpack with React
+
+That's easy once you've installed and configured babel.
+
+Install React with:
+
+npm i react react-dom --save-dev
+
+Next up add babel-preset-react:
+
+npm i babel-preset-react --save-dev
+
+Configure the preset in .babelrc
+{
+  "presets": ["env", "react"]
+}
+
+As suggested by Conner Aiken you can configure babel-loader to read .jsx files too.
+
+
+Open up webpack.config.jsand configure the loader like so:
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
+    ]
+  }
+};
+
+
+To test things out you can create a dummy React component in
+./src/App.js :
+
+
+import React from "react";
+import ReactDOM from "react-dom";
+const App = () => {
+  return (
+    <div>
+      <p>React here!</p>
+    </div>
+  );
+};
+export default App;
+ReactDOM.render(<App />, document.getElementById("app"));
+
+
+Next up import the component in ./src/index.js
+
+import App from './App';
+
+and run the build again.
+
+
+## the HTML webpack plugin
+
+webpack needs two additional components for processing HTML:
+
+html-webpak-plugin and html-loader.
+
+Add the dependencies with:
+
+npm i html-webpack-plugin html-loader --save-dev
+
+Then update the webpack configuration:
+
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: { minimize: true }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    })
+  ]
+};
+
+Next up create an HTML file into ./src/index/index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>webpack 4 quickstart</title>
+</head>
+<body>
+    <div id="app">
+    </div>
+</body>
+</html>
+
+There's no need to include your javascript inside HTML file:
+the bundle will be automatically injected.
+
+
+Open up ./dist/index.html in your browser:
+you should see the React component working!
