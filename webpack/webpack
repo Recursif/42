@@ -307,3 +307,110 @@ the bundle will be automatically injected.
 
 Open up ./dist/index.html in your browser:
 you should see the React component working!
+
+
+## Extracting CSS to a file
+
+webpack doesn't know to extract CSS to a file.
+
+In the past it was a job for extract-text-webpack-plugin
+
+Unfortunately said plugin does not play well with webpack 4.
+
+
+mini-css-extract-plugin is here to overcome those issues.
+
+NOTE: Make sure to update webpack to version 4.2.0. Otherwise mini-css-extract-plugin won’t work!
+
+Install the plugin and css-loader with:
+
+npm i mini-css-extract-plugin css-loader --save-dev
+
+Next up create a CSS file for testing things out:
+
+Configure both the plugin and the loader:
+
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: { minimize: true }
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
+  ]
+};
+
+Finally import the CSS in the entry point:
+
+import style from './main.css'
+
+To recap: extract-text-webpack-plugin does not work with webpack 4. Use mini-css-extract-plugin instead.
+
+
+
+## The webpack dev server
+
+Running the npm run dev whenever you changes to your code? Far from ideal.
+
+
+It takes just a minute to configure a development server with webpack.
+
+Once configured webpack dev server will launch your app inside a browser.
+
+It will automagically refresh the browser's window as well, every time you change a file.
+
+To set up webpack dev server install the package with:
+
+npm i webpack-dev-server --save-dev
+
+
+Next up open package.jsonand adjust the scripts like the following:
+
+"scripts": {
+  "start": "webpack-dev-server --mode development --open",
+  "build": "webpack --mode production"
+}
+
+
+you’ll see webpack dev server launching your application inside the browser.
+
+
+## Ressources
+A Github repo for the tutorial =>
+https://github.com/valentinogagliardi/webpack-4-quickstart
+
+https://github.com/valentinogagliardi/awesome-webpack-4
+
+https://survivejs.com/webpack/
+
+The blog of the article
+https://www.valentinog.com/blog/webpack-4-tutorial/
