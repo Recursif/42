@@ -108,4 +108,51 @@ you can run ngrok tunnels over your domains. To run a tunnel over
 dev.example.com, follow these steps:
 
 1. Enter dev.example.com as a Reserved Domain on the Reserved tab of your ngok.com
-dashboard
+dashboard. This guarantees that no one else can hijack your domain name with their own tunnel.
+
+2. On your dashboard, click on the 'CNAME' icon to copy your CNAME target.
+
+3. Create a DNS CNAME record from dev.example.com to your CNAME target.
+In this example, we would point the CNAME record to 2w9c34maz.cname.ngrok.io
+
+4. Invoke ngrok with the -hostname switch and specify the name of your custom domain as an argument.
+Make sure the -region you specify matches the region in which you reserved your domain.
+
+ngrok http -region=us -hostname=dev.example.com 8000
+
+
+### Tunneling only HTTP or HTTPS
+
+By default, when ngrok runs an http tunnel, it opens endpoints for both HTTP and HTTPS traffis.
+If you wish to only forward HTTP or HTTPs traffic, but not both, you can toggle thie behavior the -bind-tls switch.
+
+Example: Only listen on an HTTP tunnel endpoint
+ngrok http -bind-tls=false site.dev:80
+
+Example: Only listen on an HTTPS tunnel endpoint
+ngrok http -bind-tls=true site.dev:80
+
+
+### Websockets
+
+Websockets endpoints work through ngrok's http tunnels
+without any changes.
+However, there is currnetly no support for introspecting them beyond the initial 101
+Swithing Protocols response.
+
+
+## TLS Tunnels
+
+HTTPS tunnels terminate all TLS(SSL) traffic at the ngrok.com servers using
+ngrok.com certificates. For production-grade services, you'll want your tunneled traffic to
+be encrypted with your own TLS key and certificate.
+
+ngrok makes this extraordinarily easy with TLS tunnels.
+
+Forward TLS traffic to a local HTTPS server on port 443
+
+ngrok tls -subdomain=encrypted 443
+
+Once your tunnel is running, try accessing it with curl.
+
+curl --insecure https://encrypted.ngrok.io
