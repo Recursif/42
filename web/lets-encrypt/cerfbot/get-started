@@ -3,11 +3,11 @@
 
 On Ubuntu systems, the Certbot team maintains a PPA. Once you add it to your list of repositories all you'll need to do is apt-get the following packages.
 
-$ sudo apt-get update
-$ sudo apt-get install software-properties-common
-$ sudo add-apt-repository ppa:certbot/certbot
-$ sudo apt-get update
-$ sudo apt-get install certbot
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot
 
 
 ## Get Started
@@ -18,7 +18,7 @@ certificates.
 Since your server architecture doesn't yet support automatic installation you'll have to use the certonly command
 to obtain your sertificate:
 
-$ sudo certbot certonly
+sudo certbot certonly
 
 This will allow you interaticely select the plugin and options used to obtain your sertificate.
 
