@@ -1,0 +1,111 @@
+
+# Ngrok documentation
+
+## Expose a local web server to the internet
+
+ngrok allows you to expose a web server running
+your local machine to the internet.
+Just tell ngrok what port your web server is listening on.
+
+If you don't know what port your web server is listening on,
+it's probably port 80, the default for HTTP.
+
+ngrok http 80.
+
+When you start ngrok, it will display a UI in your terminal with
+the public URL of your tunnel and ohter status and metrics information
+about connections made over your tunnel.
+
+
+ngrok by @inconshreveable
+
+Tunnel Status                 online
+Version                       2.0/2.0
+Web Interface                 http://127.0.0.1:4040
+Forwarding                    http://92832de0.ngrok.io -> localhost:80
+Forwarding                    https://92832de0.ngrok.io -> localhost:80
+
+Connnections                  ttl     opn     rt1     rt5     p50     p90
+                              0       0       0.00    0.00    0.00    0.00
+
+### Inspecting your traffic
+
+ngrok provides a real-time web UI where you can
+introspect all of the HTTP traffic over your tunnels.
+
+After you have, look back at the inspection UI.
+You will see all of the details of the request and response
+including time, duration, headers, query parameters and request payload
+as well as the raw bytes on the wire.
+
+
+### Replaying requests
+
+Developing for webhooks issued by external APIs can often slow down your development
+cycle by requiring you to do some work, like dialing a phone, to
+trigger the hook request. ngrok allows you to replay any request with a single click
+dramatically speeding up your iteration cycle. Click the Replay button at the top-right corner
+of any request on the web inspection UI to replay it.
+
+
+### Request body validation
+
+ngrok has special support for the most common data interchange formats in use on the web.
+
+Any XML or JSON data inrequest or response bodies is automatically pretty-pinned for you and
+checked for syntax errors.
+
+
+### Installing your AuthToken
+
+
+Many advanced features of the ngrok.com service described in further sections require that you
+sign up for an account. Once you've signed up, you need to configure ngrok with the authtoken
+that appears on your dashboard. This will grant you access to account only features.
+ngrok has a simple 'authtoken' command to make this easy.
+
+Under the hood, all the authtoken command does it to add the
+authtoken property in your ngrok configuration file.
+
+ngrok authtoken <YOUR_AUTHTOKEN>
+
+
+## HTTP Tunnels
+
+### Custom subdomain names
+
+ngrok assigns random hexadecimal names to the HTTP tunnels it opens for you.
+
+This is okay for one-time personal uses. But if you're dispaying the URL at a
+hackathon or integrating with a third-party webhook, it can be frustrating if the tunnel name
+changes or is difficult to read. You can specify a custom subdomain for your tunnel URL with
+the -subdomain switch.
+
+ngrok http -subdomain=inconshreveable 80
+
+ngrok by @inconshreveable
+
+...
+Forwarding                    http://inconshreveable.ngrok.io -> 127.0.0.1:80
+Forwarding                    https://inconshreveable.ngrok.io -> 127.0.0.1:80
+
+
+### Password protecting your tunnel
+
+Anyone who can guess your tunnel URL can access your local web server unless you protect it with a password.
+
+You can make your tunnels secure with the -auth switch.
+
+This enforces HTTP Basic Auth on all requests with the username and password you specify as an argument.
+
+ngrok http -auth="username:password" 8080
+
+
+### Tunnels on custom domains (white label URLs)
+
+Instead of your tunnel appearing as a subdomain of ngrok.io,
+you can run ngrok tunnels over your domains. To run a tunnel over
+dev.example.com, follow these steps:
+
+1. Enter dev.example.com as a Reserved Domain on the Reserved tab of your ngok.com
+dashboard
