@@ -1,0 +1,99 @@
+1519120640433	geckodriver	INFO	geckodriver 0.19.1
+1519120640436	geckodriver	INFO	Listening on 127.0.0.1:51159
+1519120641565	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.v5rnbZ15p0LX"
+1519120644282	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing languages: An unexpected property was found in the WebExtension manifest.
+1519120644282	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing langpack_id: An unexpected property was found in the WebExtension manifest.
+1519120644282	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing sources: An unexpected property was found in the WebExtension manifest.
+1519120644296	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519120644301	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519120644330	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing languages: An unexpected property was found in the WebExtension manifest.
+1519120644330	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing langpack_id: An unexpected property was found in the WebExtension manifest.
+1519120644330	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing sources: An unexpected property was found in the WebExtension manifest.
+1519120644343	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519120644344	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519120645015	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not compatible with application version.
+1519120645017	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not compatible with application version.
+1519120645022	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519120645022	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519120646912	Marionette	INFO	Listening on port 43605
+1519120647037	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://ads-by.madadsmedia.com/tags/46194/17603/passbacks/pubmatic_728x90.js, line 1: ReferenceError: realURL is not defined
+JavaScript error: resource://gre/components/nsUrlClassifierListManager.js, line 287: NS_ERROR_NOT_INITIALIZED: Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIUrlClassifierDBService.getTables]
+JavaScript error: resource://gre/components/nsUrlClassifierListManager.js, line 287: NS_ERROR_NOT_INITIALIZED: Component returned failure code: 0xc1f30001 (NS_ERROR_NOT_INITIALIZED) [nsIUrlClassifierDBService.getTables]
+1519120663130	Marionette	INFO	Ceased listening
+1519120682010	geckodriver	INFO	geckodriver 0.19.1
+1519120682012	geckodriver	INFO	Listening on 127.0.0.1:36151
+1519120683136	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.fQsGe00f6PmR"
+1519120683508	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing languages: An unexpected property was found in the WebExtension manifest.
+1519120683508	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing langpack_id: An unexpected property was found in the WebExtension manifest.
+1519120683508	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing sources: An unexpected property was found in the WebExtension manifest.
+1519120683517	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519120683518	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519120683524	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing languages: An unexpected property was found in the WebExtension manifest.
+1519120683524	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing langpack_id: An unexpected property was found in the WebExtension manifest.
+1519120683524	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing sources: An unexpected property was found in the WebExtension manifest.
+1519120683532	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519120683532	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519120683821	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not compatible with application version.
+1519120683822	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not compatible with application version.
+1519120683827	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519120683827	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519120684961	Marionette	INFO	Listening on port 35911
+1519120685079	Marionette	WARN	TLS certificate errors will be ignored for this session
+1519120994087	geckodriver	INFO	geckodriver 0.19.1
+1519120994090	geckodriver	INFO	Listening on 127.0.0.1:38089
+1519120995211	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.qw6CItYOj13g"
+1519120995577	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing languages: An unexpected property was found in the WebExtension manifest.
+1519120995578	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing langpack_id: An unexpected property was found in the WebExtension manifest.
+1519120995578	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing sources: An unexpected property was found in the WebExtension manifest.
+1519120995586	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519120995588	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519120995594	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing languages: An unexpected property was found in the WebExtension manifest.
+1519120995594	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing langpack_id: An unexpected property was found in the WebExtension manifest.
+1519120995594	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing sources: An unexpected property was found in the WebExtension manifest.
+1519120995602	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519120995602	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519120995913	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not compatible with application version.
+1519120995914	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not compatible with application version.
+1519120995919	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519120995919	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519120997018	Marionette	INFO	Listening on port 42663
+1519120997131	Marionette	WARN	TLS certificate errors will be ignored for this session
+1519121060686	geckodriver	INFO	geckodriver 0.19.1
+1519121060689	geckodriver	INFO	Listening on 127.0.0.1:54869
+1519121061810	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Pgwd1hHxVFYP"
+1519121062206	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing languages: An unexpected property was found in the WebExtension manifest.
+1519121062206	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing langpack_id: An unexpected property was found in the WebExtension manifest.
+1519121062206	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing sources: An unexpected property was found in the WebExtension manifest.
+1519121062215	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519121062217	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519121062223	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing languages: An unexpected property was found in the WebExtension manifest.
+1519121062223	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing langpack_id: An unexpected property was found in the WebExtension manifest.
+1519121062223	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing sources: An unexpected property was found in the WebExtension manifest.
+1519121062231	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519121062231	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519121062557	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not compatible with application version.
+1519121062558	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not compatible with application version.
+1519121062562	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519121062563	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519121063676	Marionette	INFO	Listening on port 39349
+1519121063721	Marionette	WARN	TLS certificate errors will be ignored for this session
+1519121138778	geckodriver	INFO	geckodriver 0.19.1
+1519121138781	geckodriver	INFO	Listening on 127.0.0.1:43519
+1519121139868	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.6MyZ185fv1bK"
+1519121140243	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing languages: An unexpected property was found in the WebExtension manifest.
+1519121140244	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing langpack_id: An unexpected property was found in the WebExtension manifest.
+1519121140244	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing sources: An unexpected property was found in the WebExtension manifest.
+1519121140252	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519121140253	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519121140259	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing languages: An unexpected property was found in the WebExtension manifest.
+1519121140260	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing langpack_id: An unexpected property was found in the WebExtension manifest.
+1519121140260	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing sources: An unexpected property was found in the WebExtension manifest.
+1519121140268	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519121140268	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519121140591	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not compatible with application version.
+1519121140592	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not compatible with application version.
+1519121140598	addons.xpi	WARN	Add-on langpack-en-GB@firefox.mozilla.org is not correctly signed.
+1519121140598	addons.xpi	WARN	Add-on langpack-en-ZA@firefox.mozilla.org is not correctly signed.
+1519121141702	Marionette	INFO	Listening on port 39409
+1519121141784	Marionette	WARN	TLS certificate errors will be ignored for this session
