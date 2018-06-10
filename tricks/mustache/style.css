@@ -37,3 +37,15 @@
     border-right: solid 30px yellow;
     border-bottom: solid 30px green;
 }
+
+
+.mustache {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    position: absolute;
+    color: black;
+    background-color: currentColor;
+    box-shadow:
+        150px 240px 0 0 currentColor;
+}
