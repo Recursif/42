@@ -1,0 +1,88 @@
+
+## Théorème des restes chinois 
+
+Le théorème des restes chinois est un résultat d'aruthmétique 
+modulaire traitant de résolution de systèmes de congruences.
+
+Ce résultat, établi initialement pour Z/nZ, 
+se généralise en théorie des anneaux.
+
+Ce théorème est utilisé en théorie des nombres.
+
+Sun Zi 3eme siecle.
+
+Shushu Jiuzang 1247.
+
+Le résultat concerne le système de congruences.
+
+Soient des objets en nombre inconnu.
+Si on les range par 3 il en reste 2.
+
+Si on les range par 5, il en reste 3 et 
+si on les range par 7, il en reste 2.
+
+Combien a t-on d'objets?
+
+Cette énigme est parfois associé au général Han Xin 
+comptant son armée.
+
+La solution proposée par Sun Zi:
+
+Multiplie le reste de la division par 3, c'est à dire 2, par 70,
+ajoute lui le prodiot du reste de la division par 5, cad 2, par 21
+puis ajoute le produit du rest de la division par 7, cad 2, par 15.
+
+Tant que le nombre est plus grand que 105 retire 105.
+
+
+2*70+3*21+2*15 % 105
+
+Mais la solution n'explique qu'imparfaitement la méthode utilisée. On peut cependant remarquer que :
+
+70 a pour reste 1 dans la division par 3 et pour reste 0 dans les divisions par 5 et 7 ;
+21 a pour reste 1 dans la division par 5 et pour reste 0 dans les divisions par 3 et 7 ;
+15 a pour reste 1 dans la division par 7 et pour reste 0 dans les divisions par 3 et 5.
+
+Le nombre 2*70 + 3 * 21 + 2 * 15 a bien alors pour restes 
+respectifs 2, 3 et dans les divisions par 3, 5 et 7.
+
+Enfin comme 105 a pour reste 0 dans les trois types de division,
+on peut l'oter ou l'ajouter autant de fois que l'on veut sans changer les valeurs des restes.
+
+La plus petite valeur obtenue est 23.
+
+
+1202 Liber Abbaci de Fibonacci chap XII
+
+ibn al-Haytham 
+
+Astronomie et concordance de calendrier.
+
+
+Reponse à des question comme:
+
+Dans combien de jours la pleine lune tombera-t-elle au solstice d'hiver?
+
+Si la question se pose alors qu'il reste 6 jours avant le solstice d'hiver et 3 jours avant la
+pleine lune alors la question de traduit par:
+
+Existe-t-il un entier x tel que le reste de la division de x par 365 donne 6 et le reste de la division de x par 28 donne 3 ?
+
+
+# Système de congruences d'entiers
+
+## Théorème 
+
+Soient n1, ... nk des entiers deux à deux premier entre eux 
+(ce qui veut dire que leur pgcd (ni, nj) = 1 lorsque i != j)
+
+Alors pour tous entiers a1, ..., ak il existe un entier x,
+
+unique modulo n = Prod(ni) tel que 
+
+x % a1 = n1
+
+...
+
+x % ak = nk
+

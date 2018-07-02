@@ -1,0 +1,57 @@
+
+# Arithmétique élémentaire
+
+## Théorème de Bachet-Bézout 
+
+c'est un résultat d'arithmétique élémentaire, qui
+prouve l'existence de solutions à l'équations
+diophantienne linéaire(ax + by = c ou a,b et c sont 3 entiers relatifs):
+
+ax + by = pgcd(a ,b)
+
+d'inconnues x et y entiers relatifs, ou a et b 
+sont des coefficients entiers relatifs.
+
+Le théorème de Bézout affirme que les entiers a et b sont premiers entre eux 
+si et seulement si l'équation ax + by = 1 
+admet une solutions.
+
+On dit que a et b sont premier entre eux 
+si leur plyus grand diviseur commun est 1.
+
+Claude Gaspard Bachet de Mériziac.
+ Problèmes plaisans et délectables qui se font par les nombres, parue en 1624.
+
+Au 18e siècle, le mathématicien Étienne Bézout a généralisé ce résultat, notamment aux polynômes.
+
+
+infinité de solution.
+
+À partir d'un couple solution (x0, y0), il est facile de prouver que l'on a aussi :
+
+(a(x0 - k (b/d))) + (b(y0 + k (a/d))) = d
+
+où k peut varier dans ℤ.
+
+
+Applications:
+
+theorie des nombres
+
+recherche d'inverse modulo b 
+
+L'inverse modulaire de a pour la multiplication modulaire nombres
+est un entier u satifaisant l'équation :
+
+au % n = 1 
+
+En d'autre termes, il s'agit de l'inverse dans l'anneau 
+des entiers modulo n, noté Z/nZ ou Zn.
+
+la résolution de l'équation diophantienne ax + by = c
+
+
+
+
+
+
