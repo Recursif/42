@@ -1,0 +1,22 @@
+
+# Endogénéité 
+
+Dans un modèle statistique, l'endogénéité d'un paramètre 
+ou d'une variable est la corrélation entre ce paramètre ou cette variable et le 
+résidu.
+
+
+L'endogénéité peut donc résulter d'une erreur de mesure,
+d'un processus autorégressif avec erreurs autocorrélées ou
+de l'omission d'une variable.
+
+La méthode des variables instrumentales permet de corriger les bias 
+liées à la présence d'une variable endogène dans un modèle.
+
+
+## Résidu 
+
+Un résidu est dans un régression le terme qui n'est 
+pas expliqué par les autres variables.
+
+C'est l'ensemble des facteurs variables qui ne s'inscrit pas dans la formule estimée.

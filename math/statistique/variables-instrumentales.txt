@@ -1,0 +1,66 @@
+
+
+# Méthode des variables instrumentales 
+
+En stat, et en économétrie, la méthode des variables instrumentales 
+est une méthode permattant d'identifier et d'estimer des 
+relations causales entre des variables.
+
+
+## Modéle de régression linéaire à variables instrumentales 
+
+Le modèle de régression linéaire simple 
+fait l'hypothèse que les variables 
+explicatives sont statistiquement indépendantes 
+du terme d'erreur.
+
+Ex:
+
+yi = b0 + b1*xi + ui
+
+avec xi la variable explicative et ui 
+le terme d'erreur, on suppose généralement que 
+xi est exogène, cad que E(ui|xi) = 0
+
+Lorsque l'hypothèse d'éxogénéité n'est pas vérrifiée, 
+les estimateurs des moindres carrés ordinaires sont 
+biaisés et le coef B& ne peut pas être interprété comme l'effet 
+causal de x sur y.
+
+On dit que xi est endogène.
+
+
+Un instrument ou variable instrumentales est une variable
+(par ex zi) telle qu'elle est corrélée à xi mais 
+n'est pas corrélée à ui.
+
+Autrement dit, une variation de zi a un effet sur 
+xi mais pas d'effet sur ui.
+
+En étudiant les variations de yi et xui liées aux 
+variations de zi, on peut obtenir l'effet causal de x sur y.
+
+On a alors un système d'équations:
+
+yi = b0 + b1*xi + ui
+xi = g0 + g1**zi + vi 
+
+On peut estimer les paramètres de ce systèmes d'équations et obtenir 
+une estimation sans biais du paramètre b1.
+
+
+
+
+
+
+
+
+
+
+
+## Inférence causale
+
+L'inférence causale désigne le processus par le 
+lequel on peut établir une relation de causalité 
+entre un éléments et ses effets.
+
