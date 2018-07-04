@@ -1,0 +1,16 @@
+
+# Algoritme d'euclide
+
+
+L'algoritme d'Euclide est un algorithme permattant de déterminer le plus grand 
+commun diviseur (PGCD) de deux entiers sans connaître leur 
+factorisation.
+
+livre VII des elements d'Euclide.
+l'anthyphèrèse.
+
+## Explication arithmétiques 
+
+On sait que PGCD(a, 0) = a 
+et que PGCD(a, b) = PGCD(b, amod(b))
+
