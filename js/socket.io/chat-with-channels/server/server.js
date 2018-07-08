@@ -15,20 +15,20 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 // Load env variables
-const env = require('dotenv').config()
+//const env = require('dotenv').config()
 
 var webpack = require('webpack')
 var webpackConfig = require('../webpack.config')()
 var compiler = webpack(webpackConfig)
 
 
-
+/*
 mongoose.connect('mongodb://localhost:27017/test')
 mongoose.connection.on("error", () => {
     console.log('MongoDB Connection Error. Please make sure that MongoDB is running!')
     process.exit(1)
 })
-
+*/
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -54,5 +54,8 @@ app.get('*',function(req,res){
     res.sendFile(path.join(__dirname, '../dist/index.html'));
     //__dirname : It will resolve to your project folder.
 });
+
+
+app.listen(8080)
 
 module.exports = app

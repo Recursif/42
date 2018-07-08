@@ -6,6 +6,8 @@ import RouteWithSubRoutes from './components/route-with-sub-routes'
 import routes from './routes/index.js'
 
 
+import 'antd/dist/antd.css';
+
 class App extends Component {
     render () {
         return (
