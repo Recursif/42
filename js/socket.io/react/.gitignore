@@ -1,0 +1,7 @@
+
+*.wt
+db
+.env 
+node_modules 
+
+
