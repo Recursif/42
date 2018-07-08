@@ -4,13 +4,20 @@ import { Layout, Menu, Breadcrumb, List } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
-//import fetchChannels from '../../redux/action/channels'
+import fetchChannels from '../../redux/action/channels'
 
 
 class Home extends Component {
     constructor(props) {
         super(props)
     }
+
+    componentWillMount() {
+        this.props.dispatch(
+            fetchChannels()
+        )
+    }
+
     render() {
         return (
             <div>

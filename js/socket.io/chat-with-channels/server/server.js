@@ -17,6 +17,14 @@ const mongoose = require('mongoose')
 // Load env variables
 //const env = require('dotenv').config()
 
+const Channel = require('./models/Channel')
+
+
+// Controllers 
+const channelController = require('./controllers/channel')
+
+
+
 var webpack = require('webpack')
 var webpackConfig = require('../webpack.config')()
 var compiler = webpack(webpackConfig)
@@ -39,7 +47,7 @@ if (app.get('env') === 'development') {
       noInfo: true,
       publicPath: webpackConfig.output.publicPath
     }));
-    app.use(require('webpack-hot-middleware')(compiler));
+    app.use(require('webpack-hot-middleware')(compiler))
 }
 
 
@@ -49,11 +57,17 @@ app.use(express.static(path.join(__dirname, 'dist')))
 
 //-- Get methods --
 
+app.get('/channel', channelController.getChannels)
+
+app.post('/channel/add', channelController.addChannel)
+
+
 // Route to access to the landing page
-app.get('*',function(req,res){
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../dist/index.html'))
     //__dirname : It will resolve to your project folder.
-});
+})
+
 
 
 app.listen(8080)
