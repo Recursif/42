@@ -5,12 +5,11 @@ import thunk from 'redux-thunk'
 import promise from 'redux-promise'
 import rootReducer from './redux/reducers'
 
-const configureStore = (initialState) => {
+const configureStore = () => {
     const logger = createLogger()
 
     const store = createStore(
         rootReducer,
-        initialState,
         applyMiddleware(thunk, promise, logger)
     )
 

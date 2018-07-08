@@ -30,13 +30,13 @@ var webpackConfig = require('../webpack.config')()
 var compiler = webpack(webpackConfig)
 
 
-/*
-mongoose.connect('mongodb://localhost:27017/test')
+
+mongoose.connect('mongodb://localhost:27017/chat')
 mongoose.connection.on("error", () => {
     console.log('MongoDB Connection Error. Please make sure that MongoDB is running!')
     process.exit(1)
 })
-*/
+
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))

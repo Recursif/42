@@ -7,12 +7,8 @@ import configureStore from './store'
 import App from './App'
 import history from './history'
 
-const initialState = {
-    auth: {},
-    messages: {}
-}
 
-const store = configureStore(initialState)
+const store = configureStore()
 
 ReactDOM.render(
     <Provider store={store}>

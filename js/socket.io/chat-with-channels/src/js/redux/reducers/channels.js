@@ -2,32 +2,26 @@
 const channels = (state = [], action) => {
     switch (action.type) {
         case 'ADD_FETCHED_CHANNELS':
-            return action.events
+            return action.channels
         case 'ADD_CHANNEL':
             return [
-                action.event,
+                action.channel,
                 ...state
             ]
         case 'UPDATE_CHANNEL':
-            var eventsList = state.slice()
-            const event = eventsList.find((event) => event._id == action.event._id)
-            const eventIndex = eventsList.indexOf(event)
+            var channelsList = state.slice()
+            const channel = channelsList.find((channel) => channel._id == action.channel._id)
+            const channelIndex = channelsList.indexOf(channel)
             
-            if (eventIndex == -1) {
+            if (channelIndex == -1) {
                 return state
             } else {
-                eventsList[eventIndex] = action.event
-                return eventsList
+                channelsList[channelIndex] = action.channel
+                return channelsList
             }
-        case 'TOGGLE_CHANNEL':
-            return state.map(event =>
-                (event._id === action.id)
-                    ? {...event, finish: !event.finish}
-                    : event
-            )
         default:
             return state
     }
 }
   
-export default events
+export default channels
