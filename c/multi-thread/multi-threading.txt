@@ -1,0 +1,204 @@
+
+# Multi Threading sous Linux 
+
+Cet article utilise la bibliothèque LinuxThreads 
+disponible en standard sur la majorité 
+des distributions LINUX récentes.
+
+
+## Qu'est-ce que le multi-threading?
+
+Les programmeurs LINUX et plus généralement 
+UNIX sont depuis longtemps habitués aux fonctionalités 
+multi-taches de leur système.
+
+Sous UNIX il est aisé de créer des processus fils 
+à partir d'un processus existant l'appel système fork,
+comme le montre le petit exemple de code ci-dessous:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int i;
+
+int main (int ac, char **av)
+{
+    int pid;
+
+    i = 1;
+
+    if ((pid = fork()) == 0)
+    {
+        /* Dans le fils */
+        printf("Je suis le fils, pid = %d\n", getpid())
+        sleep(2);
+        printf ("Fin du fils, i = %d !\n", i);
+        exit (0)
+    }
+    else if (pid > 0) {
+        /* Dans le pere */
+        pritnf ("Je suis le pere, pid = ùd\n", getpid());
+        sleep (1);
+
+        /* Modifie la variable */
+        i = 2;
+        printf ("le pere a modifie la variable a %s\n", i);
+        exit (1);
+    }
+    else {
+        /* Erreur */
+        perror ("fork");
+        exit (1);
+    }
+}
+
+
+Les limites du fork apparaissent d'ores et déjà, 
+lorsqu'il s'agit de partager des variables entre processus père 
+et son fils.
+
+Comme on le voit dans le petit exemple ci-dessus, 
+la variable global i, modifiée par le père a toujours l'ancienne valeur
+dans le fils.
+
+Ceci est le comportement normal du fork qui duplique le contexte 
+courant lors de la création d'un processus fils.
+
+En plus d'empécher le partage de variables, 
+la création d'un nouveau contexte est pénalisante 
+au niveau performances.
+
+Il en est de même pour le chanfement de contexte
+(context switch), lorsdu passage d'un processus à 
+un autre.
+
+
+Un thread ressemble fortement à un processus 
+fils classique à la différence qu'il partage 
+beaucoup plus de données avec le processus 
+qui l'à crée:
+
+- les variables globales 
+- les variables statiques locales
+- les descripteurs de fichiers (file desciptor)
+
+Le multi-threading donc est une technique de programmation 
+permettant de profiter des avantages 
+(et aussi de certaines contraintes) de l'utilisation des threads.
+
+
+## Les biblios de threads 
+
+De nombreux systèmes d'exploitation permettent 
+aujourd'hui la programmation par threads.
+
+On dénombre deux principaux types d'implémentations de threads:
+- Au niveau utilisateur (user-kernel)
+A ce moment la, la gestion des threads est entièrement 
+faite dans l'espace utilisateur.
+
+- Au niveau noyau (kernel-level). Dans ce cas, les threads sont 
+directement gérés par le noyau.
+
+Dans ce cas, la base de l'implémantation est entre-autes 
+l'appel système clone, également utilisé pour la création 
+de processus classiques:
+
+NAME 
+    clone - create a child process 
+
+SYNOPSIS 
+    #include <linux/shed.h>
+    #include <linux/unistd.h>
+
+    pid_t clone(void *sp, unsigned long flags)
+
+DESCRIPTION
+    clone is an alternate interface to fork, with more 
+    options.  fork is equivalent to clone(0, SIGCLD|COPYVM).
+
+
+## Comment créer des threads sous LINUX?
+
+Voici un petit exemple de progrmme utilisant deux 
+threads d'affichage:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+void *my_thread_process (void * arg)
+{
+    int i;
+
+    for (i = 0; i < 5; i++) {
+        printf ("Thread %s: %d\n", (char*)arg, i);
+        sleep (1);
+    }
+    pthread_exit (0);
+}
+
+main (int ac, char **av)
+{
+    pthread_t th1, th2;
+    void *ret;
+
+    if (pthread_create (&th1, NULL, my_thread_process, "1") < 0) {
+        fprintf (stderr, "pthread_create error for thread 1\n");
+        exit (1);
+    }
+
+    if (pthread_create (&th1, NULL, my_thread_process, "2") < 0) {
+        fprintf (stderr, "pthread_create error for thread 2\n");
+        exit (1);
+    }
+    (void)pthread_join (th1, &ret);
+    (void)pthread_join (th2, &ret);
+}
+
+La fonction pthread_create permet de créer le thread et de l'associer à 
+la fonction my_thread_process.
+
+On notera que le paramètre void *arg est au thread lors de sa création.
+
+Après création des deux threads, le progamme principal attend la fin 
+des threads en utilisant la fonction pthread_join.
+
+Après compilation de ce programme par la commande:
+
+cc -D_REENTRANT -o thread1 thread1.c -lpthread 
+
+Il donne à l'exécution 
+
+Thread 1: 0
+Thread 2: 0
+Thread 1: 1
+Thread 2: 1
+Thread 1: 2
+Thread 2: 2
+Thread 1: 3
+Thread 2: 3
+Thread 1: 4
+Thread 2: 4
+
+
+## Partages des données et synchronisation 
+
+### Les Mutex 
+
+Le partage de données nécessite parfois d'utiliser 
+des techniques permettant de protéger à un instant donné 
+une variable partagée par plusieurs threads.
+
+Imaginons un simple tableau d'entier rempli par 
+un thread (lent) et lu par un autre 
+(plus rapide).
+
+Le thread de lecture doit attendre la fin du remplissage du tableau 
+avant d'afficher son contenu.
+
+Pour cela, on peut utiliser le système 
+des MUTEX (MUtual EXclusion) afin de protéger le 
+tableau pendant de son remplissage:
+
