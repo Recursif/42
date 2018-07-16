@@ -428,3 +428,45 @@ par pthread_testcancel.
 Au bout de deux secondes,
 le thread est détruit par un appel à pthread_cancel
 dans le programme principal.
+
+
+
+void *my_thread_process (void * arg)
+{
+  int i;
+
+  pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+  pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
+
+  for (i = 0 ; i < 5 ; i++) {
+    printf ("Thread %s: %d\n", (char*)arg, i);
+    sleep (1);
+  }
+}
+
+## Debug d'un programme multi-thread sous Linux 
+
+Les dernières versions de gdb et de la glibc 
+permettent de debugger un programme LINUX utilisant du multi-threading.
+
+Voici un petit exemple de session gdb sur le programme d'exemple thread1.
+
+L'action sur next exécute la fonction pthread_create qui provoque la création du thread 1.
+
+
+## Conclusion 
+
+L'utilisation du multi-threading permet de faciliter la programmation
+d'un grand nombres d'applications de type serveur ou multimédia,
+tout en améliorant les fonctionnalités du programme
+par rapport à une solution classique basée sur
+l'utilisation des créations de processus (fork).
+
+Les pointeurs suivants vous seront utiles si vous vous lancez dans le multi-threading:
+La bibliothèque LinuxThreads sur http://pauillac.inria.fr/~xleroy/linuxthreads
+Le site "Programming POSIX threads" sur http://www.humanfactor.com/pthreads
+Si vous voulez porter vos applicatifs sur Win32, la bibliothèque "POSIX Threads (pthreads) for Win32" sur http://sourceware.cygnus.com/pthreads-win32
+La FAQ du groupe de discussion comp.programming.threads sur http://www.serpentine.com/~bos/threads-faq
+
+
+Inria inventeur du monde numérique
