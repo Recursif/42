@@ -323,3 +323,108 @@ void main (int ac, char **av)
     (void)pthread_join (th1, &ret);
     (void)pthread_join (th2, &ret);
 }
+
+## JOINABLE ou DETACHED 
+
+Dans les exemples précédents, les 
+threads sont crées en mode JOINABLE,
+cad que le processus qui a crée le thread attend la 
+fin de celui-ci en restant bloqué sur l'appel 
+à pthread-join. Lorsque le thread se termine,
+les ressources mémoire du thread sont libérées 
+grâce à l'appel à pthread_join.
+
+Si cet appel n'est pas effectuée, la mémoire 
+n'est pas libérée et il s'en suit une fuite 
+de mémoire.
+
+Pour éviter un appel systèmatique à pthread_join 
+(qui peut parfois être contraignant), on peut 
+créer le thread en mode DETACHED.
+
+Dans ce cas la, la mémoire sera correctement libérée à 
+la fin du thread.
+
+Pour cela il faut ajouter le code suivant:
+
+pthread_attr_t thread_attr;
+
+if (pthread_attr_init (&thread_attr) != 0) {
+    fprintf (stderr, "pthread_attr_init error");
+    exit (1);
+}
+
+if (pthread_attr_setdetachstate (&thread_attr, PTHREAD_CREATE_DETACHED) != 0) {
+    fprintf (stderr, "pthread_attr_init_error");
+    exit(1);
+}
+
+puis de créer les threads avec des appels du type:
+
+if (pthread_create (&th1, &thread_attr, thread1_process, NULL) < 0) {
+    fprintf (stderr, "pthread_create error for thread 1\n");
+    exit (1);
+}
+
+## Destruction de thread: cancellation 
+
+Les exemples ci-dessus utilisait la fonction pthread_exit
+pour la destruction d'un thread
+(en fait le thread se détruisait tout seul).
+
+Il existe un mecanisme dans lequel un thread peut 
+en détruire un autre à condition que ce dernier 
+ait validé cette possibilité.
+
+Le comportnement par défault est 
+de type décalé (deferred).
+Lorsqu'on envoit une requête de destruction 
+d'un thread, celle-ci n'est exécuté que lorsque 
+ce thread passe par un cancellation point 
+comme par exemple l'appel à la fonction pthread_testcancel.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <unistd.h>
+
+void *my_thread_process (void * arg)
+{
+    int i;
+
+    pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+
+    for (i = 0; i < 5; i++) {
+        printf ("Thread %s: %d\n", (char*)arg, i);
+        sleep (1);
+        pthread_testcancel ();
+    }
+}
+
+main (int ac, char **av)
+{
+    pthread_t th1, th2;
+    void *ret;
+
+    if (pthread_create (&th1, NULL, my_thread_process, "1") < 0) {
+        fprintf (stderr, "pthread_create error for thread 1\n");
+        exit (1);
+    }
+
+    sleep (2);
+    if (pthread_cancel (th1) != 0) {
+        fprintf (stderr, "pthread_cancel error for thread 1\n");
+        exit (1);
+    }
+
+    (void)pthread_join (th1, &ret);
+}
+
+Le thread un accepte les destruction
+par l'appel à la fonction pthread_setcancelstate
+au début du thread puis teste les demandes de destruction
+par pthread_testcancel.
+
+Au bout de deux secondes,
+le thread est détruit par un appel à pthread_cancel
+dans le programme principal.
