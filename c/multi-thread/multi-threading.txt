@@ -202,3 +202,124 @@ Pour cela, on peut utiliser le système
 des MUTEX (MUtual EXclusion) afin de protéger le 
 tableau pendant de son remplissage:
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <phthread.h>
+#include <unistd.h>
+
+static pthread_mutex_t my_mutex;
+static int tab[5];
+
+void *read_tab_process(void * arg)
+{
+    int i;
+
+    pthread_mutex_lock (&my_mutex);
+    for (i = 0; i != 5; i++)
+        printf ("read_process, tab[%d] vaut %d\n", i, tab[i]);
+    pthread_mutex_unlock (&my_mutex);
+    pthread_exit (0);
+}
+
+void *write_tab_process (void * arg)
+{
+    int i;
+
+    phtread_mutex_lock (&my_mutex);
+    for (i = 0; i != 5; i++) {
+        tab[i] = 2 * i;
+        printf ("write_process, tab[%d] vaut %d\n", i, tab[i]);
+        slep (1); /* Ralentit le thread d'écriture*/
+    }
+    pthread_mutex_unlock (&my_mutex);
+    phtread_exit(0)
+}
+
+main (int ac, char **av)
+{
+    pthread_t th1, th2;
+    void *ret;
+
+    pthread_mutex_init (&my_mutex, NULL);
+
+    if (pthread_create (&th1, NULL, write_tab_process, NULL) < 0) {
+        fprintf (stderr, "pthread_create error for thread 2\n");
+        exit (1);
+    }
+
+    (void)pthread_join (th1, &ret);
+    (void)pthread_join (th2, &ret);
+}
+
+La fonction pthread_mutex_lock verrouille le MUTEX 
+pendant la durée du remplissage du tableau.
+
+Le thread de lecture est contraint d'attendre l'appel 
+à pthread_mutex_unlock pour verrouiller 
+à son tour le MUTEX et lire le tableau correct.
+
+
+-pthread tells the compiler to link in the pthread 
+library as well as configure the compilation for threads.
+
+
+## Les sémaphores POSIX
+
+La bibliothèques LinuxThreads fournit également 
+une implémentation des sémaphores POSIX 1003.1b.
+
+L'utilisation de sémaphores permet aussi la 
+synchronisation entre plusieurs threads.
+
+Voici un exemple simple:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+static sem_t my_sem;
+int the_end;
+
+void *thread1_process (void * arg)
+{
+    while (!the_end) {
+        printf ("Je t'attend !\n");
+        sem_wait (&my_sem);
+    }
+
+    printf ("OK, je sors !\n");
+    pthread_exit (0);
+}
+
+void *thread2_process (void * arg)
+{
+    register int i;
+
+    for (i = 0; i < 5; i++) {
+        printf ("J'arrive %d !\n", i);
+        sem_post (&my_sem); /* Pour débloquer le dernier sem_wait */
+        pthread_exit (0);
+    }
+}
+
+void main (int ac, char **av)
+{
+    pthread_t th1, th2;
+    void *ret;
+
+    sem_init (&my_sem, 0, 0);
+
+    if (pthread_create (&th1, NULL, thread1_process, NULL) < 0) {
+        fprintf (stderr, "pthread_create error for thread 1\n");
+        exit (1);
+    }
+
+    if (pthread_create (&th2, NULL, thread2_process, NULL) < 0) {
+        fprintf (stderr, "pthread_create error for thread 2\n");
+        exit (1);
+    }
+    
+    (void)pthread_join (th1, &ret);
+    (void)pthread_join (th2, &ret);
+}
