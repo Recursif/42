@@ -28,7 +28,7 @@ class myThread (threading.Thread):
 
 def get_urls(threadID, q):
     while not exitFlag:
-        browser = webdriver.Chrome()
+        
         
 
         queueLock.acquire()
@@ -39,6 +39,7 @@ def get_urls(threadID, q):
             url = q.get()
 
             queueLock.release()
+            browser = webdriver.Chrome()
 
             browser.get(url)
 
@@ -74,7 +75,7 @@ urls = [
 queueLock = threading.Lock()
 workQueue = queue.Queue()
 
-nbBrowsers = 5
+nbBrowsers = 10
 
 threads = []
 threadID = 1
