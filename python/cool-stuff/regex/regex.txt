@@ -1,0 +1,88 @@
+
+
+## Les expressions régulières en python
+
+Les regex permettent de vérifier si le contenu d'une variable a la forme 
+que l'on attend.
+
+Les expressions régulières permettent 
+non seulement de vous avertir d'un caractère 
+non désiré mais également de supprimer/modifier 
+tous ceux qui ne sont pas désibles.
+
+
+## Les symboles 
+
+. ^ $ * + ? { } [ ] \ | ( )
+
+. Le point correspond à n'importe quel caractère.
+
+^ Indique un commencement de segment mais signifie aussi "contraire de"
+
+$ Fin de segment 
+
+[xy] Une liste de segment possible.
+
+(x|y) Indique un choix multiple type (ps|ump) équivaut à ps ou ump
+
+\d    le segment est composé uniquement de chiffre, ce qui équivaut à [0-9].
+\D    le segment n'est pas composé de chiffre, ce qui équivaut à [^0-9].
+\s    Un espace, ce qui équivaut à [ \t\n\r\f\v].
+\S    Pas d'espace, ce qui équivaut à [^ \t\n\r\f\v].
+\w    Présence alphanumérique, ce qui équivaut à [a-zA-Z0-9_].
+\W    Pas de présence alphanumérique [^a-zA-Z0-9_].
+\     Est un caractère d'échappement
+
+Il est possible d'imposer le nombre d'occurences 
+avec la syntaxe suivante:
+
+A{2} : A (en maj) doit se répèter 2 fois consécutives.
+
+BA{1, 9} : BA doit répèter de 1 à 9 fois consécutives.
+
+BRA{,10} : BRA doit se répèter de 0 à 10 fois consécutives.
+
+VO{1,} : VO doit se répèter au moins une fois.
+
+
+? : 0 ou 1 GR(.)? GRS GROS GRIS GRAS
+
++ : 1 ou plus GR(.)+S GROS GRIS GRAAS
+
+* : 0,1 ou plus GR(.)*S GRS GROS GRAAS
+
+
+import re 
+
+print re.match(r"GR(.)?S", "GRIS")
+
+
+^0[0-9]([ .-/]?[0-9]{2}){4} # Matche un numéro de téléphone
+
+
+## Chercher une expression
+
+import re
+nb = re.findall("([0-9]+)", "Bonjour 111 Au revoir 222")
+print (nb)
+
+Recherche par groupe :
+>>> import re
+m = re.search(r"Bienvenue chez (?P<chezqui>\w+) ! Tu as (?P<age>\d+) ans ?", "Bienvenue chez olivier ! Tu as 32 ans")
+if m is not None:
+    print m.group('chezqui')
+    print m.group('age')
+
+olivier 
+32
+
+## Remplacer une expression 
+
+Pour remplacer une expression on utilise la méthode sub().
+
+strToreplace = "Bienvenue chez olivier ! Tu as 32 ans")
+print re.sub(r"Bienvenue chez (?P<chezqui>\w+") ! Tu as (?P<age>\d+) ans ?", r"\g<chezqui> a \g<age> ans", strToreplace)
+olivier a 32 ans
+
+
+
