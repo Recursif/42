@@ -1,0 +1,52 @@
+
+# Get the current directory in Python
+
+import os 
+
+dirPath = os.path.dirname(os.path.realpath(__file__))
+
+
+## os.path.realpath(path)
+
+returns the canonical path of the 
+specified filename, eliminating any 
+symbolic links 
+encountered in the path.
+
+## os.path.dirname(path)
+
+returns the directory name of pathname 
+path
+
+## os.getcwd()
+
+return a str representing the current working directory 
+
+## os.chdir()
+
+change the current working directory to path 
+
+Ex:
+
+dirname, filename = os.path.split(os.path.abspath(__file__))
+
+
+import os 
+
+print("Path at terminal whn executing this file")
+print(os.getcwd() + "\n")
+
+
+print("This file path, relative to as.getcwd()")
+print(__file__ + "\n")
+
+print("This file full path (following symlinks)")
+full_path = os.path.realpath(__file__)
+print(full_path + "\n")
+
+print("This file directory and name")
+path, filename = os.path.split(full_path)
+print(path + ' --->' + filename + "\n")
+
+print("This file directory only")
+print(os.path.dirname(full_path))
