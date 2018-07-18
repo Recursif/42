@@ -1,0 +1,37 @@
+
+# pass and continue
+
+pass simply does nothing
+
+continue goes on with the next loop iteration.
+
+Ex:
+
+a = [0, 1, 2]
+
+for element in a:
+    if not element:
+        pass
+    print element
+0
+1
+2
+
+for element in a:
+    if not element:
+        continue
+    print element
+1
+2
+
+
+pass is only useful when you
+sintactically need an indented suite,
+but you want to do nothing.
+
+Ex:
+
+Ignore some exception:
+
+except SomeException: pass
+
