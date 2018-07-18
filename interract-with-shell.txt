@@ -1,0 +1,24 @@
+
+
+Avec python il est possible d'executer une simple commande externe en utilisant la fonction system() du module os, comme dans cet exemple
+
+>>> import os
+>>> os.system('ls -l')
+total 8
+drwxr-xr-x   6 toto  staff   204 Oct 27 20:17 HomeWork
+drwxr-xr-x  42 toto  staff  1428 Nov 22 11:26 WorkSpace
+drwxr-xr-x   7 toto  staff   238 Nov 11 18:41 Desktop
+drwxr-xr-x  22 toto  staff   748 Nov 17 19:03 Documents
+0
+>>>
+
+
+>>> from subprocess import call
+>>> call(["ls", "-l"])
+total 8
+drwxr-xr-x   6 toto  staff   204 Oct 27 20:17 HomeWork
+drwxr-xr-x  42 toto  staff  1428 Nov 22 11:26 WorkSpace
+drwxr-xr-x   7 toto  staff   238 Nov 11 18:41 Desktop
+drwxr-xr-x  22 toto  staff   748 Nov 17 19:03 Documents
+0
+>>>
