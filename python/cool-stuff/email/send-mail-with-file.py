@@ -31,4 +31,15 @@ def send_mail(send_from, send_to, subject, text, files=None, server="127.0.0.1")
     smtp = smtplib.SMTP(server)
     smtp.sendmail(send_from, send_to, msg.as_string())
     smtp.close()
-    
+
+username = 'my-address@gmail.com'
+password = 'top-secret'
+default_address = ['my-address2@gmail.com'] 
+
+send_mail(
+    send_from= username,
+    subject="test",
+    text="text",
+    send_to= None,
+    files= # pass a list with the full filepaths here...
+)
