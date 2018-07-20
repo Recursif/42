@@ -1,0 +1,97 @@
+
+
+# Envoyer un mail
+
+Envoyer un mail en SMTP avec
+la library smtplib
+
+
+## Gmail 
+
+Prenons l'exemple d'une address gmail,
+dans notre cas l'address sera XXX@gmail.com
+
+
+import smtplib 
+from email.MIMEMultipart import MIMEMultipart 
+from email.MIMEText import MIMEText
+
+msg = MIMEMultipart()
+msg['From'] = 'XXX@gmail.com'
+msg['To'] = 'YYY@gmail.com'
+msg['Subject'] = 'Le sujet de mon mail'
+
+message = 'Bonjour !'
+
+msg.attach(MIMEText(messages))
+
+mailserver = smtplib.SMTP('smtp.gmail.com', 587)
+mailserver.ehlo()
+mailserver.starttls()
+mailserver.ehlo()
+mailserver.login('XX@gmail.com', 'PASSWORD')
+mailserver.sendmail('XXX@gmail.com', 'XXX@gmail.com', msg.as_string())
+mailserver.quit()
+
+Ce code est indépendant de la config de votre server.
+
+
+## Envoyer un mail lorsqu'une page est défaillante 
+
+Les adminsys utilisent cela souvent.
+
+Un serveur en surveille un autre.
+
+Le premier check toutes les minutes si le deuxième 
+serveur répond pour une requête 
+HTTP et surtout si son temps de réponse 
+est acceptable:
+
+
+import urllib2
+import time 
+
+import smtplib 
+from email.MIMEMultipart import MIMEMultipart 
+from email.MIMEText import MIMEText 
+
+from fabric.api import *
+
+def send_error(t2, name):
+
+    env.host_string = 'XXX.com'
+    env.user = 'user'
+    env.password = 'PASSWORD'
+
+    # On récupère les connections actives du serveur distant 
+
+    adresses_ip = run("netstat -ntu | awk '{print $5}' | cud -d: -f1 | sort | uniq -c | sort -n")
+
+    msg = MIMEMultipart()
+    msg['From'] = 'YYY@gmail.com'
+    msg['To'] = 'XXX@gmail.com'
+    msg['Subject'] = 'Temps de réponse: {0} {1}s'.format(name, t2)
+    message = 'Temps de réponse: {0} - {1}'.format(t2, adresses_ip)
+    msg.attach(MIMEText(message))
+    mailserver = smtplib.SMTP('smtp.gmail.com', 587)
+    mailserver.ehlo()
+    mailserver.starttls()
+    mailserver.ehlo()
+    mailserver.login('XXX@gmail.com', 'PASSWORD')
+    mailserver.sendmail('XXX@gmail.com', 'XXX@gmail.com', msg.as_string())
+    mailserver.quit()
+
+t1 = time.time()
+
+try:
+    response = urllib2.urlopen('http://XXX.com')
+    html = response.read()
+except:
+    t2 = time.time() - t1
+    send_eror(t2, "EXCEPTION")
+
+t2 = time.time() - t1
+
+if  t2 > 5:
+    send_error(t2, "TIMEOUT")
+
