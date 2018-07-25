@@ -1,5 +1,9 @@
 
 import time 
+import sys
 
-time.sleep(4)
+print("go")
+if (len(sys.argv) > 1):
+    print(sys.argv[1])
+time.sleep(6)
 print("ok")
