@@ -1,7 +1,7 @@
 import random as rand
 from math import sqrt
 
-total = 10000
+total = 1000000000
 nbsix = 0
 de = rand.randint(1,6)
 n = 0
