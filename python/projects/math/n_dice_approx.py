@@ -21,6 +21,17 @@ for i in range(max_dice):
     proba_law.append(0)
     x.append(i + 1)
 
+for i in range(nb_of_launch):
+    sum_dices = 0
+    for j in range(nb_dices):
+        dice = rand.randint(1,6)
+        sum_dices += dice
+    proba_law[sum_dices - 1] += 1
+
+print(proba_law)
+
+for i in range(len(proba_law)):
+    proba_law[i] = proba_law[i] / nb_of_launch
 
 # the histogram of the data
 

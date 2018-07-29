@@ -1,0 +1,67 @@
+
+# Loi de probabilité 
+
+En théorie des proba et en statistique, une loi 
+décrit le comportement aléatoire d'un phénomène 
+dépendant du hasard.
+
+Premier cas d'études les tirages de boules.
+
+Ces premières approches sont des phénomènes discrets,
+cad dont le nombre de résultats possibles est fini 
+ou au plus dénonbrable.
+
+Certaines questions ont cependant fait
+apparaître des lois à support infini non dénombrable.
+
+Ex: lorsque le nombre de tirages tend verd l'infini, 
+la répartion du nombre de pies obtenus s'approche 
+d'une loi normale.
+
+Des fluctuations ou de la variabilité sont présentes dans presque 
+toute valeur qui peut-être mesurée lors d'observation d'un phénomène,
+quelle que soit sa nature on parle d'erreur intrasèque.
+
+Les lois de probabilités permettent de modéliser ces incertitudes 
+et de décrire des phénomènes physiques, biologiques, économiques...
+
+Le domaine de la statistique permet de trouver
+des lois de probabilités adaptées aux phénomènes aléatoires.
+
+Il existe beaucoup de lois de probabilité différentes.
+
+Parmi toutes ces lois la loi normale a une  
+importantce particulère puisque, d'après le 
+théorème de central limite elle approche 
+le comportement asymptotique de nombreuses lois de probabilités.
+
+Le concept de loi de probabilité se formalise mathématiquement 
+à l'aide de la théorie de la mesure :
+une loi de probabilité est une mesure, souvent vue comme la loi 
+décrivant le comportement d'une variable aléatoire, discrète ou continue.
+
+Une mesure est un loi de probabilité si sa masse vaut 1.
+
+L'étude d'une variable aléatoire suivant une loi de 
+probabilité discrète fait apparaître des calculs 
+de sommes de séries, alors que si sa loi est absolument continue,
+l'étude de la variable aléatoire fait apparaître des calculs intégrales.
+
+ Des fonctions particulières permettent de caractériser
+ les lois de probabilité,
+ par exemple la fonction de répartition et la fonction caractéristique.
+
+
+# Définition informelle 
+
+Historiquement, les lois de probabilité ont été étudiées dans les jeux de hasard
+
+Donner la loi de probabilité revient à donner la liste des valeurs possibles avec leurs probabilités associées.
+
+Elle est alors donnée sous forme de formule,
+de tableau de valeurs, d'arbre de proba ou de fonctions.
+
+
+Dans un contexte plus général, c'est à dire dans le cas ou le nombre de valeurs 
+possibles du phénomène aléatoire est infinie,
+la loi de proba est donné 
