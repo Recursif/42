@@ -3,8 +3,8 @@ AR=ar
 ARFLAGS=rcs
 CC=gcc
 CFLAGS=-Wall -Wextra -Werror
-INCLUDES=-I includes/
-SOURCES= sources/
+INCLUDES=-I inc/
+SOURCES= src/
 
 CONVERT =convert/
 IS = is/
