@@ -10,22 +10,24 @@ for i in range(26):
 """
 
 i = 1
-while (i <= 15):
+while (i <= 7):
     word = "a" * i
     print(word)
     j = 0
-    k = 0
-    while(j < i):
+    while(word != "z" * i):
+        j = 0
+        while (list(word)[i - j - 1] == "z"):
+            word = list(word)
+            word[i - j - 1] = chr(ord("a"))
+            word = ''.join(word)
+            j += 1
         word = list(word)
-        word[i - j - 1] = chr(ord("a") + k)
+        word[i - j - 1] = chr(ord(word[i - j - 1]) + 1)
         word = ''.join(word)
         print(word)
-        k += 1
         #print(k)
 
-        if (list(word)[i - j - 1] == "z"):
-            k = 0
-            j += 1
+        
     i += 1
 
 """
