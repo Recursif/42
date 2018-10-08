@@ -1,0 +1,29 @@
+
+# std::function
+
+C++ Bibliothèque d'utilitaires Objets Function std::function
+
+Defined in header <functional>
+template< class >
+class function; /* undefined */
+(depuis C++11)
+
+template< class R, class... Args >
+class function<R(Args...)>
+(depuis C++11)
+
+
+Le template de classe std::function est un adaptateur générique
+de fonction.
+
+
+En d'autres termes, une instance de std::function permet
+de manipuler une cible appelable
+(i.e. pour laquelle operator() est défini),
+par exemple : une lambda (fonction anonyme),
+un bind (application partielle de fonction),
+un foncteur (objet-fonction), une fonction...
+
+
+
+

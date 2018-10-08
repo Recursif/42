@@ -1,0 +1,46 @@
+
+
+# Push_Back
+
+Add element add at the end
+
+Adds a new element at the end of the vector,
+after its current last element.
+
+The content of val is copied (or moved) to the new element.
+
+## Parameters
+
+val
+Value to be copied (or moved) to the new element.
+Member type value_type is the type of
+the elements in the container,
+defined in vector as an alias of
+its first template parameter (T).
+
+
+// vector::push_back
+#include <iostream>
+#include <vector>
+
+int main ()
+{
+    std::vector<int> myvector;
+    int myint;
+
+    std::cout << "Please enter some integers (enter 0 to end):\n";
+
+    do {
+        std::cin >> myint;
+        myvector.push_back (myint);
+    } while (myint);
+
+    std::cout << "myvector stores " << int(myvector.size()) << " numbers.\n";
+
+    return 0;
+}
+
+
+
+
+

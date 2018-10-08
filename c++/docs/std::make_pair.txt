@@ -1,0 +1,34 @@
+
+# std::make_pair
+
+The behavior of this function template is the same as if defined as:
+
+template <class T1,class T2>
+  pair<T1,T2> make_pair (T1 x, T2 y)
+  {
+    return ( pair<T1,T2>(x,y) );
+  }
+
+x, y
+Values for the members first and second, respectively, of the pair object being constructed.
+
+
+A pair object whose elements first and second are set to x and y respectivelly.
+The template parameters can be implicitly deduced.
+
+// make_pair example
+#include <utility>      // std::pair
+#include <iostream>     // std::cout
+
+int main () {
+    std::pair <int,int> foo;
+    std::pair <int,int> bar;
+
+    foo = std::make_pair (10,20);
+    bar = std::make_pair (10.5,'A'); // ok: implicit conversion from pair<double,char>
+
+    std::cout << "foo: " << foo.first << ", " << foo.second << '\n';
+    std::cout << "bar: " << bar.first << ", " << bar.second << '\n';
+
+    return 0;
+}
