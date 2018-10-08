@@ -54,6 +54,37 @@ void prime_factorization(int num)
         }
 
         while (number%prime_numbers[i] == 0)
+        {
+            count++;
+            number = number/prime_numbers[i];
+        }
+
+        if (count)
+            factors.push_back(make_pair(prime_numbers[i], count));
+    }
+}
 
 
+/*
+    I added a simple UI.
+*/
+int main()
+{
+    int num;
+    cout << "\t\tComputes the prime factorization\n\n";
+    cout << "Type in a number: ";
+    cin>>num;
+
+    SieveOfEratosthenes(num);
+
+    prime_factorization(num);
+
+    // Prime factors with their powers in the given number in new line
+    for(auto it: factors)
+    {
+        cout<<it.first<<" "<<it.second<<endl;
+    }
+
+    return 0;
+}
 
