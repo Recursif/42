@@ -59,7 +59,7 @@ def parse_tetriminos(n, sample):
     for block in tetriminos:
         block[0] -= min_pos_x
         block[1] -= min_pos_y
-    print (tetriminos)
+    #print (tetriminos)
     return (tetriminos)
 
 
@@ -231,17 +231,17 @@ def main():
 
     fd = sys.argv[1]
 
-    print(fd)
+    #print(fd)
 
     res = 10
     cols = 10
     rows = 10
 
-    canvas = create_canvas(cols, rows, res, window)
+    #canvas = create_canvas(cols, rows, res, window)
 
-    button_quit = tk.Button(window, text='quit', command=window.quit)
+    #button_quit = tk.Button(window, text='quit', command=window.quit)
 
-    button_quit.pack(padx=5, pady=5)
+    #button_quit.pack(padx=5, pady=5)
 
     l_tetriminos = import_tetriminos(fd)
 
@@ -253,6 +253,8 @@ def main():
 
     grid = fillit(l_tetriminos)
     print_grid(grid)
+
+    sys.exit()
 
     #draw
     #window.mainloop()
