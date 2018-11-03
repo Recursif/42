@@ -4,6 +4,7 @@ import tkinter as tk
 import random as rand
 import time
 
+import sys
 # Parseurs
 
 def parse_sample(sample):
@@ -118,7 +119,7 @@ def place(grid, l, pos, n):
         y  = l[i][1] + pos[1]
         grid[y][x] = char
         i += 1
-    print (grid)
+    #print (grid)
     return (grid)
 
 def unplace(grid, l, pos):
@@ -152,7 +153,7 @@ def fillit(l):
             can_be_placed = False
         if (can_be_placed):
             grid = place(grid, l[i], l_pos[i], i)
-            print_grid(grid, canvas)
+            #print_grid(grid)
             i += 1
         else:
             next_pos = calculate_next_pos(l_pos[i], square_size)
@@ -187,7 +188,7 @@ def draw_square(symb, x, y, canvas, res = 10):
 def print_grid(grid):
     i = 0
     while (i < len(grid)):
-        print (grid[i])
+        print ("".join(grid[i]))
         i += 1
     time.sleep(1)
 
@@ -228,7 +229,9 @@ def main():
 
     window = tk.Tk()
 
-    fd = str(input())
+    fd = sys.argv[1]
+
+    print(fd)
 
     res = 10
     cols = 10
@@ -242,16 +245,17 @@ def main():
 
     l_tetriminos = import_tetriminos(fd)
 
-    print (l_tetriminos)
+    #print (l_tetriminos)
 
-    l_color = create_list_color(len(l_tetriminos))
+    #l_color = create_list_color(len(l_tetriminos))
 
-    print (l_color)
+    #print (l_color)
 
     grid = fillit(l_tetriminos)
+    print_grid(grid)
 
-    draw
-    window.mainloop()
+    #draw
+    #window.mainloop()
 
 if __name__ == '__main__':
     main()
